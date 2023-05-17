@@ -1,0 +1,29 @@
+{
+  "name": "portfolio-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^6.2.4",
+    "@astrojs/tailwind": "^3.1.2",
+    "astro": "^2.4.5",
+    "tailwindcss": "^3.3.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.33.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "prettier-plugin-astro": "^0.8.1"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

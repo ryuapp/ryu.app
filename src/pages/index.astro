@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import RyuappLogo from "../components/icons/ryuapp.astro";
+---
+
+<Layout title="ryuapp">
+  <div class="mx-auto flex h-screen max-w-lg items-center justify-center px-3">
+    <div>
+      <main>
+        <div class="mb-5 flex justify-center">
+          <RyuappLogo />
+        </div><h1 class="mb-5 text-center text-2xl">
+          Ryu is a frontend developer in Japan.
+        </h1><h2 class="mb-5 text-center text-3xl font-bold text-green-500">
+          Development
+        </h2><div class="mb-5 flex justify-center">
+          <a href="/dev/fluent-emoji" class="link-card inactive"
+            ><dl>
+              <dt class="text-lg">Fluent Emoji Picker</dt><dd
+                class="text-sm text-zinc-400"
+              >
+                Can copy Fluent Emoji easily
+              </dd>
+            </dl></a
+          >
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </div>
+</Layout>

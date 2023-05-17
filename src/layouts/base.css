@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.link-card {
+  @apply mx-2 my-1 w-60 rounded-md border border-solid border-gray-700 bg-transparent p-2 cursor-pointer transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] hover:bg-zinc-800/50 active:bg-zinc-800 active:scale-95;
+}
+.link-card a {
+  -webkit-user-drag: none;
+}
+.h-screen {
+  height: 100svh;
+}
+.py-05 {
+  /* Additional vertical padding used by kbd tag. */
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+#markup {
+  @apply leading-normal break-words text-xl;
+}
+
+#markup > * + * {
+  @apply mt-0 mb-4;
+}
+
+#markup li + li {
+  @apply mt-1;
+}
+
+#markup li > p + p {
+  @apply mt-6;
+}
+
+#markup p {
+  @apply text-zinc-400;
+}
+#markup strong {
+  @apply font-semibold;
+}
+
+#markup a {
+  @apply text-green-500 underline font-semibold;
+}
+
+#markup strong a {
+  @apply font-bold;
+}
+
+#markup h1 {
+  @apply leading-tight border-zinc-500 border-b text-4xl font-semibold mb-4 mt-6 pb-2;
+}
+
+#markup h2 {
+  @apply leading-tight border-zinc-500 border-b text-2xl font-semibold mb-4 mt-6 pb-2;
+}
+
+#markup h3 {
+  @apply leading-snug text-lg font-semibold mb-4 mt-6;
+}
+
+#markup h4 {
+  @apply leading-none text-base font-semibold mb-4 mt-6;
+}
+
+#markup h5 {
+  @apply leading-tight text-sm font-semibold mb-4 mt-6;
+}
+
+#markup h6 {
+  @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-6;
+}
+
+#markup blockquote {
+  @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
+}
+
+#markup code {
+  @apply text-sm inline bg-gray-200 rounded px-1 py-05;
+}
+
+#markup pre {
+  @apply bg-gray-100 rounded p-4;
+}
+
+#markup pre code {
+  @apply block bg-transparent p-0 overflow-visible rounded-none;
+}
+
+#markup ul {
+  @apply text-base pl-8 list-disc;
+}
+
+#markup ol {
+  @apply text-base pl-8 list-decimal;
+}
+
+#markup kbd {
+  @apply text-xs inline-block rounded border px-1 py-05 align-middle font-normal font-mono shadow;
+}
+
+#markup table {
+  @apply text-base border-gray-600;
+}
+
+#markup th {
+  @apply border py-1 px-3;
+}
+
+#markup td {
+  @apply border py-1 px-3;
+}
+
+/* Override pygments style background color. */
+#markup .highlight pre {
+  @apply bg-gray-100 !important;
+}

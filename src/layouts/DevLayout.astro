@@ -1,0 +1,37 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+import "./base.css";
+import Footer from "../components/Footer.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="text-white bg-zinc-900">
+    <div class="mx-auto max-w-5xl">
+      <main class="mx-5">
+        <div id="markup">
+          <slot />
+        </div>
+      </main>
+      <div class="my-5 flex justify-center">
+        <a
+          href="/"
+          class="cursor-pointer rounded-md border border-solid border-gray-700 bg-transparent px-4 py-2 transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] hover:bg-zinc-800/50 active:scale-95 active:bg-zinc-800 active"
+          aria-current="page">Home</a
+        >
+      </div>
+      <Footer />
+    </div>
+  </body>
+</html>
