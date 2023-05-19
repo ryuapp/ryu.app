@@ -1,14 +1,12 @@
 ---
 layout: ../../layouts/DevLayout.astro
-title: Fluent Emoji Picker
+title: "Fluent Emoji Picker"
 ---
 
 # Fluent Emoji Picker
 
-Fluent Emoji are a collection of familiar, friendly, and modern emoji from Microsoft.<br>
-
+Fluent Emoji are a collection of familiar, friendly, and modern emoji from Microsoft.  
 Using Fluent Emoji Picker, you can easily copy emoji in SVG format.
-<br><br>
 
 ## Link
 
