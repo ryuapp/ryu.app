@@ -1,0 +1,14 @@
+---
+const frontmatter = Astro.props;
+---
+
+<a href="/dev/fluent-emoji" class="link-card">
+  <dl>
+    <dt class="text-lg">
+      {frontmatter.title}
+    </dt>
+    <dd class="text-sm text-zinc-400">
+      {frontmatter.description}
+    </dd>
+  </dl>
+</a>
