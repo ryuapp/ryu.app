@@ -14,15 +14,10 @@ html.is-animating .transition-fade {
   opacity: 0;
 }
 
-.link-card {
-  @apply mx-2 my-1 w-60 rounded-md border border-solid border-gray-700 bg-transparent p-2 cursor-pointer transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] hover:bg-zinc-800/50 active:bg-zinc-800 active:scale-95;
-}
-.link-card a {
-  -webkit-user-drag: none;
-}
 .h-screen {
   height: 100svh;
 }
+
 .py-05 {
   /* Additional vertical padding used by kbd tag. */
   padding-top: 0.125rem;

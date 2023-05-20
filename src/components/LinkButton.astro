@@ -5,6 +5,7 @@ const frontmatter = Astro.props;
 <a
   href={frontmatter.href}
   class="cursor-pointer rounded-md border border-solid border-gray-700 bg-transparent px-4 py-2 transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] hover:bg-zinc-800/50 active:scale-95 active:bg-zinc-800"
+  style="-webkit-user-drag: none;"
 >
   {frontmatter.name}
 </a>
