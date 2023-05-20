@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  @apply w-2;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-400 rounded;
+}
 /* swup transition */
 .transition-fade {
   transition: 0.25s;
