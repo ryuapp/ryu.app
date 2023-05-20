@@ -6,25 +6,23 @@ import LinkCard from "../components/LinkCard.astro";
 ---
 
 <Layout title="ryuapp">
-  <div class="mx-auto flex h-screen max-w-lg items-center justify-center px-3">
-    <div>
-      <main>
-        <div class="mb-5 flex justify-center">
-          <RyuappLogo />
-        </div>
-        <h1 class="mb-5 text-center text-2xl">
-          Ryu is a frontend developer in Japan.
-        </h1>
-        <h2 class="mb-5 text-center text-3xl font-bold text-green-500">
-          Development
-        </h2>
-        <div class="mb-5 flex justify-center">
-          <LinkCard
-            title="Fluent Emoji Picker"
-            description="Can copy Fluent Emoji easily"
-          />
-        </div>
-      </main>
+  <div class="flex justify-center">
+    <div class="max-w-lg items-center flex flex-col justify-center h-screen">
+      <div class="mb-5 flex">
+        <RyuappLogo />
+      </div>
+      <h1 class="mb-5 text-center text-2xl">
+        Ryu is a frontend developer in Japan.
+      </h1>
+      <h2 class="mb-5 text-center text-3xl font-bold text-green-500">
+        Development
+      </h2>
+      <div class="mb-5 flex justify-center">
+        <LinkCard
+          title="Fluent Emoji Picker"
+          description="Can copy Fluent Emoji easily"
+        />
+      </div>
       <Footer />
     </div>
   </div>

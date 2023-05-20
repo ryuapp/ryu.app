@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* swup transition */
+.transition-fade {
+  transition: 0.4s;
+  opacity: 1;
+}
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+
 .link-card {
   @apply mx-2 my-1 w-60 rounded-md border border-solid border-gray-700 bg-transparent p-2 cursor-pointer transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] hover:bg-zinc-800/50 active:bg-zinc-800 active:scale-95;
 }
