@@ -6,7 +6,8 @@
 
 /* swup transition */
 .transition-fade {
-  transition: 0.4s;
+  transition: 0.25s;
+  transition-timing-function: ease-in-out;
   opacity: 1;
 }
 html.is-animating .transition-fade {
