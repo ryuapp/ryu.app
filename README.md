@@ -4,13 +4,12 @@
 
 ```
 /
-├── public/
-│   └── favicon.svg
+├── public/                 For static files
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
+│   ├── components/         UI components for layouts and pages
+│   ├── layouts/            Layouts for pages
+│   ├── scripts/            JavaScript for client
+│   ├── utils/              Will be deprecated
 │   └── pages/
 │       └── index.astro
 │       └── dev/
