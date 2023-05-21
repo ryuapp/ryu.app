@@ -19,4 +19,4 @@ Using Fluent Emoji Picker, you can easily copy emoji in SVG format.
 
 ## Image
 
-![Fluent Emoji Picker Sample Image](img/fluent-emoji.webp)
+![Fluent Emoji Picker Sample Image](/dev/img/fluent-emoji.webp)
