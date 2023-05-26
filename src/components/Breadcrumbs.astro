@@ -6,9 +6,12 @@ const { title } = Astro.props;
 ---
 
 <nav class="flex text-gray-400">
-  <a class="hover:text-white transition" href="/">Home</a>
-  <p class="mx-1 select-none">/</p>
-  <p class="">Dev</p>
-  <p class="mx-1 select-none">/</p>
-  <p>{title}</p>
+  <a
+    class="rounded-sm transition p-2 hover:text-gray-300 hover:bg-zinc-800 -ml-2"
+    href="/">Home</a
+  >
+  <p class="mx-1 my-2 select-none">/</p>
+  <p class="p-2">Dev</p>
+  <p class="mx-1 my-2 select-none">/</p>
+  <p class="p-2">{title}</p>
 </nav>

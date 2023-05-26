@@ -56,7 +56,7 @@ html.is-animating .transition-fade {
 }
 
 #markup a {
-  @apply text-green-500 underline font-semibold;
+  @apply text-green-600 decoration-green-700 hover:text-green-500 hover:decoration-green-500 underline font-semibold transition;
 }
 
 #markup strong a {
