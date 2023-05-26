@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/DevLayout.astro
 title: "Fluent Emoji Picker"
+description: "Can copy Fluent Emoji easily"
 ---
 
 # Fluent Emoji Picker

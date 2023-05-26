@@ -13,4 +13,8 @@ const { title, description } = Astro.props;
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <title>{(title ? title + " | " : "") + "ryuapp"}</title>
 <meta name="description" content={description} />
+<meta
+  http-equiv="Content-Security-Policy"
+  content="img-src 'self'; object-src 'none'; frame-src 'none';"
+/>
 <SwupScript />
