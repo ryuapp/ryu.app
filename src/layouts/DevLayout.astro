@@ -1,10 +1,10 @@
 ---
-import "./base.css";
-import SwupScript from "../utils/swup.astro";
+import BaseHead from "../components/BaseHead.astro";
 import LinkButton from "../components/LinkButton.astro";
 import Footer from "../components/Footer.astro";
 
 import type { MarkdownLayoutProps } from "astro";
+
 type Props = MarkdownLayoutProps<{
   title: string;
 }>;
@@ -13,11 +13,7 @@ const { frontmatter } = Astro.props;
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{frontmatter.title}</title>
-    <SwupScript />
+    <BaseHead title={frontmatter.title} description="" />
   </head>
   <body class="text-white bg-zinc-900" ontouchstart="">
     <div id="swup" class="mx-auto max-w-5xl transition-fade">

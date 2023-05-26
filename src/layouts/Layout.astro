@@ -1,20 +1,15 @@
 ---
-import "./base.css";
-import SwupScript from "../utils/swup.astro";
+import BaseHead from "../components/BaseHead.astro";
 export interface Props {
-  title: string;
+  title: string | undefined;
+  description: string | undefined;
 }
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
-    <meta name="description" content="Ryu is a frontend developer in Japan." />
-    <SwupScript />
+    <BaseHead title={title} description={description} />
   </head>
   <body class="text-white bg-zinc-900" ontouchstart="">
     <main id="swup" class="transition-fade">
