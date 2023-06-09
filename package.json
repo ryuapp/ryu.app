@@ -19,12 +19,8 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.33.0",
-    "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.8.1"
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
   }
 }
