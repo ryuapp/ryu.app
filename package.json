@@ -7,8 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "prepare": "husky install"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^6.2.4",
