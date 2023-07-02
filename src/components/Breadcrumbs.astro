@@ -1,8 +1,13 @@
 ---
-export interface Props {
-  title: string;
+export interface Breadcrumb {
+  name: string;
+  href: string;
 }
-const { title } = Astro.props;
+interface Props {
+  title: string;
+  items: Array<Breadcrumb>;
+}
+const { title, items } = Astro.props;
 ---
 
 <nav class="flex text-gray-400">
@@ -11,7 +16,18 @@ const { title } = Astro.props;
     href="/">Home</a
   >
   <p class="mx-1 my-2 select-none">/</p>
-  <p class="p-2">Dev</p>
-  <p class="mx-1 my-2 select-none">/</p>
+  {
+    items.map((item) => (
+      <>
+        <a
+          class="rounded-sm transition p-2 hover:text-gray-300 hover:bg-zinc-800"
+          href={item.href}
+        >
+          {item.name}
+        </a>
+        <p class="mx-1 my-2 select-none">/</p>
+      </>
+    ))
+  }
   <p class="p-2">{title}</p>
 </nav>
