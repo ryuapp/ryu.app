@@ -8,7 +8,7 @@ export default defineConfig({
   output: "server",
   adapter: cloudflare(),
   integrations: [tailwind()],
-  build:{
-    assets: "assets"
-  }
+  build: {
+    assets: "assets",
+  },
 });
