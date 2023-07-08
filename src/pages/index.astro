@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import RyuappLogo from "../components/icons/ryuapp.astro";
-import LinkCard from "../components/LinkCard.astro";
+import MenuLink from "../components/MenuLink.astro";
 ---
 
 <Layout title="" description="Ryu is a frontend developer in Japan.">
@@ -11,19 +11,13 @@ import LinkCard from "../components/LinkCard.astro";
       <div class="mb-5 flex">
         <RyuappLogo />
       </div>
-      <h1 class="mb-5 text-center text-2xl">
-        Ryu is a frontend developer in Japan.
+      <h1 class="mb-5 text-center text-2xl text-neutral-400">
+        <span class="text-green-500">Ryu</span> is a frontend developer in Japan.
       </h1>
-      <h2 class="mb-5 text-center text-3xl font-bold text-green-500">
-        Development
-      </h2>
-      <div class="mb-5 flex justify-center">
-        <LinkCard
-          href="/dev/fluent-emoji"
-          title="Fluent Emoji Picker"
-          description="Can copy Fluent Emoji easily"
-        />
-      </div>
+      <nav class="mb-5 gap-1 flex flex-col justify-center">
+        <MenuLink href="/dev" title="Development" />
+        <MenuLink href="/privacy" title="Privacy Policy" />
+      </nav>
       <Footer />
     </div>
   </div>
