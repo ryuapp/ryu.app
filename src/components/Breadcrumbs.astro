@@ -10,10 +10,10 @@ interface Props {
 const { title, items } = Astro.props;
 ---
 
-<div class="relative overflow-auto">
+<div class="relative overflow-auto px-2 -ml-4">
   <nav class="flex flex-nowrap text-gray-500">
     <a
-      class="rounded transition p-2 hover:text-gray-700 hover:bg-gray-200 -ml-2 flex-none"
+      class="rounded transition p-2 hover:text-gray-700 hover:bg-gray-200 flex-none"
       href="/">Home</a
     >
     <p class="mx-1 my-2 select-none flex-none">/</p>
@@ -30,6 +30,6 @@ const { title, items } = Astro.props;
         </>
       ))
     }
-    <p class="p-2 flex-none">{title}</p>
+    <p class="p-2 flex-none text-gray-700">{title}</p>
   </nav>
 </div>

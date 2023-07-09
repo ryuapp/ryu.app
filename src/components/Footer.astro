@@ -1,12 +1,23 @@
 ---
 import GitHubIcon from "../components/icons/GitHubIcon.astro";
+const { isDark, hiddenIcons } = Astro.props;
 ---
 
 <footer class="mt-5">
-  <div class="flex justify-center">
-    <GitHubIcon />
-  </div>
-  <p class="mx-auto max-w-sm py-5 text-center text-sm text-gray-400">
+  {
+    hiddenIcons ? (
+      ""
+    ) : (
+      <div class="flex justify-center">
+        <GitHubIcon />
+      </div>
+    )
+  }
+  <p
+    class={isDark
+      ? "mx-auto max-w-sm py-5 text-center text-sm text-gray-400"
+      : "mx-auto max-w-sm py-5 text-center text-sm text-gray-500"}
+  >
     © 2023 ryu.app
   </p>
 </footer>

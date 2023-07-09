@@ -5,13 +5,17 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  @apply w-2 h-0.5;
+  @apply w-2 h-2;
 }
 ::-webkit-scrollbar-track {
   @apply bg-transparent;
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-zinc-400 rounded;
+}
+
+.scale-custom {
+  @apply transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] active:scale-95;
 }
 /* swup transition */
 .transition-fade {
@@ -49,14 +53,14 @@ html.is-animating .transition-fade {
 }
 
 #markup p {
-  @apply text-zinc-400;
+  @apply text-zinc-600;
 }
 #markup strong {
   @apply font-semibold;
 }
 
 #markup a {
-  @apply text-green-600 decoration-green-700 hover:text-green-500 hover:decoration-green-500 underline font-semibold transition;
+  @apply text-brand hover:text-brand underline font-semibold transition;
 }
 
 #markup strong a {

@@ -4,14 +4,14 @@ const frontmatter = Astro.props;
 
 <a
   href={frontmatter.href}
-  class="mx-2 my-1 w-60 rounded-md border border-solid border-gray-700 bg-transparent p-2 cursor-pointer transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] hover:bg-zinc-800/50 active:bg-zinc-800 active:scale-95"
+  class="mx-2 my-1 w-60 rounded-md border border-solid border-gray-200 bg-transparent p-2 cursor-pointer scale-custom hover:bg-gray-100 active:bg-zinc-200"
   style="-webkit-user-drag: none;"
 >
   <dl>
     <dt class="text-lg">
       {frontmatter.title}
     </dt>
-    <dd class="text-sm text-zinc-400">
+    <dd class="text-sm text-zinc-500">
       {frontmatter.description}
     </dd>
   </dl>
