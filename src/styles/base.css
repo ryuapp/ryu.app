@@ -60,7 +60,7 @@ html.is-animating .transition-fade {
 }
 
 #markup a {
-  @apply text-brand hover:text-brand underline font-semibold transition;
+  @apply text-brand hover:underline;
 }
 
 #markup strong a {
