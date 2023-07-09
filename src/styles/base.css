@@ -16,6 +16,7 @@
 
 .scale-custom {
   @apply transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] active:scale-95;
+  -webkit-user-drag: none;
 }
 /* swup transition */
 .transition-fade {
