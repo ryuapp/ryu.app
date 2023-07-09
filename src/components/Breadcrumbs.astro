@@ -1,35 +1,35 @@
 ---
 export interface Breadcrumb {
-  name: string;
-  href: string;
+  name: string
+  href: string
 }
 interface Props {
-  title: string;
-  items: Array<Breadcrumb>;
+  title: string
+  items: Array<Breadcrumb>
 }
-const { title, items } = Astro.props;
+const { title, items } = Astro.props
 ---
 
-<div class="relative overflow-auto px-2 -ml-4">
+<div class="relative -ml-4 overflow-auto px-2">
   <nav class="flex flex-nowrap text-gray-500">
     <a
-      class="rounded p-2 select-none flex-none hover:text-gray-700 hover:bg-gray-100 active:bg-zinc-200 scale-custom"
+      class="scale-custom flex-none select-none rounded p-2 hover:bg-gray-100 hover:text-gray-700 active:bg-zinc-200"
       href="/">Home</a
     >
-    <p class="mx-1 my-2 select-none flex-none">/</p>
+    <p class="mx-1 my-2 flex-none select-none">/</p>
     {
       items.map((item) => (
         <>
           <a
-            class="rounded p-2 select-none flex-none hover:text-gray-700 hover:bg-gray-100 active:bg-zinc-200 scale-custom"
+            class="scale-custom flex-none select-none rounded p-2 hover:bg-gray-100 hover:text-gray-700 active:bg-zinc-200"
             href={item.href}
           >
             {item.name}
           </a>
-          <p class="mx-1 my-2 select-none flex-none">/</p>
+          <p class="mx-1 my-2 flex-none select-none">/</p>
         </>
       ))
     }
-    <p class="p-2 flex-none text-gray-700">{title}</p>
+    <p class="flex-none p-2 text-gray-700">{title}</p>
   </nav>
 </div>

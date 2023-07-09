@@ -1,11 +1,11 @@
 ---
-import "../styles/base.css";
-import SwupScript from "../utils/swup.astro";
+import "../styles/base.css"
+import SwupScript from "../utils/swup.astro"
 export interface Props {
-  title: string | undefined;
-  description: string | undefined;
+  title: string | undefined
+  description: string | undefined
 }
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 ---
 
 <meta charset="utf-8" />
@@ -13,8 +13,5 @@ const { title, description } = Astro.props;
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <title>{(title ? title + " | " : "") + "ryuapp"}</title>
 <meta name="description" content={description} />
-<meta
-  http-equiv="Content-Security-Policy"
-  content="img-src 'self'; object-src 'none'; frame-src 'none';"
-/>
+<meta http-equiv="Content-Security-Policy" content="img-src 'self'; object-src 'none'; frame-src 'none';" />
 <SwupScript />

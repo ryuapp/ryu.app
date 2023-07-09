@@ -1,17 +1,17 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
+import BaseHead from "../components/BaseHead.astro"
 export interface Props {
-  title: string | undefined;
-  description: string | undefined;
+  title: string | undefined
+  description: string | undefined
 }
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 ---
 
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="text-neutral-900 bg-neutral-50" ontouchstart="">
+  <body class="bg-neutral-50 text-neutral-900" ontouchstart="">
     <main id="swup" class="transition-fade">
       <slot class="transition" />
     </main>

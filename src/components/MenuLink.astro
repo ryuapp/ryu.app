@@ -1,10 +1,10 @@
 ---
-const frontmatter = Astro.props;
+const frontmatter = Astro.props
 ---
 
 <a
   href={frontmatter.href}
-  class="text-center text-lg rounded-md bg-transparent px-4 py-2 cursor-pointer scale-custom hover:bg-zinc-800/50 hover:!text-brand active:bg-zinc-800 active:text-green-500"
+  class="scale-custom cursor-pointer rounded-md bg-transparent px-4 py-2 text-center text-lg hover:bg-zinc-800/50 hover:!text-brand active:bg-zinc-800 active:text-green-500"
 >
   {frontmatter.title}
 </a>
