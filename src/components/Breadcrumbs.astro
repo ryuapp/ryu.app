@@ -10,24 +10,26 @@ interface Props {
 const { title, items } = Astro.props;
 ---
 
-<nav class="flex text-gray-400">
-  <a
-    class="rounded-sm transition p-2 hover:text-gray-300 hover:bg-zinc-800 -ml-2"
-    href="/">Home</a
-  >
-  <p class="mx-1 my-2 select-none">/</p>
-  {
-    items.map((item) => (
-      <>
-        <a
-          class="rounded-sm transition p-2 hover:text-gray-300 hover:bg-zinc-800"
-          href={item.href}
-        >
-          {item.name}
-        </a>
-        <p class="mx-1 my-2 select-none">/</p>
-      </>
-    ))
-  }
-  <p class="p-2">{title}</p>
-</nav>
+<div class="relative overflow-auto">
+  <nav class="flex flex-nowrap text-gray-500">
+    <a
+      class="rounded transition p-2 hover:text-gray-700 hover:bg-gray-200 -ml-2 flex-none"
+      href="/">Home</a
+    >
+    <p class="mx-1 my-2 select-none flex-none">/</p>
+    {
+      items.map((item) => (
+        <>
+          <a
+            class="rounded transition p-2 hover:text-gray-700 hover:bg-zinc-200 flex-none"
+            href={item.href}
+          >
+            {item.name}
+          </a>
+          <p class="mx-1 my-2 select-none flex-none">/</p>
+        </>
+      ))
+    }
+    <p class="p-2 flex-none">{title}</p>
+  </nav>
+</div>
