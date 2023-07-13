@@ -7,18 +7,14 @@ breadcrumbs: [{ "name": "Development", "href": "/dev" }]
 
 # Fluent Emoji Picker
 
-Fluent Emoji are a collection of familiar, friendly, and modern emoji from Microsoft.  
-Using Fluent Emoji Picker, you can easily copy emoji in SVG format.
-
-## Link
+<img src="/img/dev/fluent-emoji.webp" alt="Fluent Emoji Picker Sample Image" width="1000px" height="360px">
 
 [fluentemoji.ryu.app](https://fluentemoji.ryu.app/)
+
+Fluent Emoji are a collection of familiar, friendly, and modern emoji from Microsoft.  
+Using Fluent Emoji Picker, you can easily copy emoji in SVG format.
 
 ## Technology Stack
 
 - Next.js
 - Tailwind CSS
-
-## Image
-
-<img src="/img/dev/fluent-emoji.webp" alt="Fluent Emoji Picker Sample Image" width="984px" height="344px">
