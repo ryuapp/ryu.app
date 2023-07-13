@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import Footer from "../components/Footer.astro"
-import LinkButton from "../components/LinkButton.astro"
+import Link from "../components/Link.astro"
 ---
 
 <Layout title="404" description="You may have used an outdated link, or you may have typed the address incorrectly.">
@@ -10,7 +10,7 @@ import LinkButton from "../components/LinkButton.astro"
       <h1 class="mb-5 text-center text-2xl">404. That’s an error.</h1>
       <p class="mb-5 text-center">You may have used an outdated link, or you may have typed the address incorrectly.</p>
       <nav class="mb-5 flex justify-center">
-        <LinkButton href="/" name="Home" />
+        <Link href="/" name="Home" />
       </nav>
       <Footer />
     </div>
