@@ -1,5 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro"
+import { React } from "../utils/react"
+
 export interface Props {
   title: string | undefined
   description: string | undefined
@@ -15,5 +17,6 @@ const { title, description } = Astro.props
     <main id="swup" class="transition-fade">
       <slot class="transition" />
     </main>
+    <React client:only="react" />
   </body>
 </html>

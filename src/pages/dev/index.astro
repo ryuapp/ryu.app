@@ -1,16 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro"
 import Footer from "../../components/Footer.astro"
-import LinkCard from "../../components/LinkCard.astro"
 import Link from "../../components/Link.astro"
+import { DevCarousel } from "../../components/DevCarousel"
 ---
 
 <Layout title="Development" description="My development list.">
-  <div class="flex justify-center">
+  <div class="flex justify-center overflow-hidden">
     <div class="flex h-screen max-w-lg flex-col items-center justify-center">
       <h1 class="mb-5 text-center text-3xl">Development</h1>
-      <nav class="mb-5 flex flex-col justify-center gap-1">
-        <LinkCard href="/dev/fluent-emoji" title="Fluent Emoji Picker" description="Can copy Fluent Emoji easily" />
+      <nav class="mb-5 flex h-40 max-w-sm flex-col justify-center">
+        <DevCarousel client:only="react" />
       </nav>
       <div class="mt-5 flex justify-center">
         <Link href="/" name="Home" />
