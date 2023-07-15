@@ -12,16 +12,15 @@ export const DevCarousel = () => {
     <div className="embla hover:cursor-grab active:cursor-grabbing" ref={emblaRef}>
       <div className="embla__container gap-4">
         {devList.map((dev, index) => (
-          <div className="embla__slide border p-5" key={index}>
+          <a
+            key={index}
+            href={"/dev/" + dev.slug}
+            className="embla__slide scale-custom rounded border p-4 hover:bg-gray-100 active:bg-gray-200"
+          >
             <h2 className="text-xl">{dev.name}</h2>
             <hr className="mb-2 border-gray-300" />
             <p>{dev.description}</p>
-            <div className="flex justify-end">
-              <a href={"/dev/" + dev.slug} className="text-blue-600 hover:underline">
-                Read More
-              </a>
-            </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
