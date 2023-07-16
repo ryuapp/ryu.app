@@ -1,4 +1,5 @@
 import useEmblaCarousel from "embla-carousel-react"
+import { useEffect } from "react"
 
 const devList = [
   { name: "Fluent Emoji Picker", description: "Web app to easily copy Fluent Emoji.", slug: "fluent-emoji" },
@@ -6,7 +7,20 @@ const devList = [
 ]
 
 export const DevCarousel = () => {
-  const [emblaRef] = useEmblaCarousel()
+  const [emblaRef, emblaApi] = useEmblaCarousel()
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "ArrowRight") {
+      emblaApi!.scrollNext()
+    } else if (event.key === "ArrowLeft") {
+      emblaApi!.scrollPrev()
+    }
+  }
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown)
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [emblaApi])
 
   return (
     <div className="embla hover:cursor-grab active:cursor-grabbing" ref={emblaRef}>
