@@ -1,6 +1,6 @@
 ---
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/700.css';
+import "@fontsource/poppins/400.css"
+import "@fontsource/poppins/700.css"
 import "../styles/base.css"
 import "../styles/embla.css"
 import SwupScript from "../utils/swup.astro"
@@ -9,12 +9,27 @@ export interface Props {
   description: string | undefined
 }
 const { title, description } = Astro.props
+const pageTitle = (title ? title + " | " : "") + "ryuapp"
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<title>{(title ? title + " | " : "") + "ryuapp"}</title>
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
+<meta property="og:site_name" content="ryuapp" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.ryu.app" />
+<meta property="og:image" content="https://www.ryu.app/ryuapp.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#39b54a" />
+<meta name="msapplication-TileColor" content="#39b54a" />
+<meta name="theme-color" content="#39b54a" />
 <meta http-equiv="Content-Security-Policy" content="img-src 'self'; object-src 'none'; frame-src 'none';" />
 <SwupScript />
