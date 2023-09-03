@@ -3,8 +3,8 @@ import BaseHead from "../components/BaseHead.astro"
 import { React } from "../utils/react"
 
 export interface Props {
-  title: string | undefined
-  description: string | undefined
+  title?: string
+  description?: string
 }
 const { title, description } = Astro.props
 ---

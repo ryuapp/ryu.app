@@ -1,6 +1,10 @@
 ---
 import GitHubIcon from "../components/icons/GitHubIcon.astro"
-const { isDark, hiddenIcons } = Astro.props
+interface Props {
+  isDark?: boolean
+  hiddenIcons?: boolean
+}
+const { isDark = false, hiddenIcons = false } = Astro.props
 ---
 
 <footer class="mt-5">
