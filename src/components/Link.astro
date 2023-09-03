@@ -1,14 +1,16 @@
 ---
 interface Props {
-  name: string
   href: string
+  variant?: "default" | "menu"
 }
-const { name, href } = Astro.props
+
+const cssDefault = "hover:bg-gray-100 active:bg-zinc-200"
+const cssMenu = "text-center text-lg hover:bg-zinc-800/50 hover:!text-brand active:bg-zinc-800 active:text-green-500"
+
+const { name, href, variant = "default" } = Astro.props
+const customCss = variant === "default" ? cssDefault : cssMenu
 ---
 
-<a
-  href={href}
-  class="scale-custom cursor-pointer rounded-md bg-transparent px-4 py-2 hover:bg-gray-100 active:bg-zinc-200"
->
-  {name}
+<a href={href} class={"scale-custom cursor-pointer rounded-md bg-transparent px-4 py-2" + " " + customCss}>
+  <slot />
 </a>

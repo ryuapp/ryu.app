@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro"
 import Footer from "../components/Footer.astro"
 import RyuappLogo from "../components/icons/ryuapp.astro"
-import MenuLink from "../components/MenuLink.astro"
+import Link from "../components/Link.astro"
 ---
 
 <Layout title="" description="Ryu is a frontend developer in Japan.">
@@ -15,9 +15,9 @@ import MenuLink from "../components/MenuLink.astro"
         <span class="text-brand">Ryu</span> is a frontend developer in Japan.
       </h1>
       <nav class="grid justify-items-start gap-1">
-        <MenuLink href="/dev" name="Development" />
-        <MenuLink href="/privacy" name="Privacy Policy" />
-        <MenuLink href="https://github.com/ryuapp" name="GitHub" />
+        <Link href="/dev" variant="menu">Development</Link>
+        <Link href="/privacy" variant="menu">Privacy Policy</Link>
+        <Link href="https://github.com/ryuapp" variant="menu">GitHub</Link>
       </nav>
       <Footer isDark={true} hiddenIcons={true} />
     </div>
