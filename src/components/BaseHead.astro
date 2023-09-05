@@ -3,13 +3,14 @@ import "@fontsource/poppins/400.css"
 import "@fontsource/poppins/700.css"
 import "../styles/base.css"
 import "../styles/embla.css"
+import { siteConfig } from "../config/site.ts"
 import SwupScript from "../utils/swup.astro"
 export interface Props {
   title?: string
   description?: string
 }
 const { title, description } = Astro.props
-const pageTitle = (title ? title + " | " : "") + "ryuapp"
+const pageTitle = (title ? title + " | " : "") + siteConfig.title
 ---
 
 <meta charset="utf-8" />
@@ -17,12 +18,12 @@ const pageTitle = (title ? title + " | " : "") + "ryuapp"
 <title>{pageTitle}</title>
 <meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
-<meta property="og:site_name" content="ryuapp" />
+<meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.ryu.app" />
-<meta property="og:image" content="https://www.ryu.app/ryuapp.webp" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:image" content={new URL("/ryuapp.webp", Astro.url)} />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
