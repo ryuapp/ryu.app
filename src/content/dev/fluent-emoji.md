@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+slug: fluent-emoji
 title: "Fluent Emoji Picker"
 description: "Can copy Fluent Emoji easily"
 breadcrumbs: [{ "name": "Development", "href": "/dev" }]

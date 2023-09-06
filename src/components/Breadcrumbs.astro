@@ -5,7 +5,7 @@ export interface Breadcrumb {
 }
 interface Props {
   title: string
-  items: Array<Breadcrumb>
+  items?: Array<Breadcrumb>
 }
 const { title, items } = Astro.props
 ---
@@ -15,7 +15,7 @@ const { title, items } = Astro.props
     <a class="scale-custom flex-none rounded p-2 hover:bg-gray-100 active:bg-zinc-200" href="/">Home</a>
     <p class="mx-1 my-2 flex-none select-none">/</p>
     {
-      items.map((item) => (
+      items?.map((item) => (
         <>
           <a class="scale-custom flex-none rounded p-2 hover:bg-gray-100 active:bg-zinc-200" href={item.href}>
             {item.name}
