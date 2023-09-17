@@ -17,6 +17,6 @@ const { title, description } = Astro.props
     <main id="swup" class="transition-fade">
       <slot class="transition" />
     </main>
-    <React client:only="react" />
+    <React client:load />
   </body>
 </html>

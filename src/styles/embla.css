@@ -8,6 +8,7 @@
   display: flex;
   touch-action: pan-y;
   margin-left: calc(var(--slide-spacing) * -1);
+  transform: translate3d(60px, 0px, 0px);
 }
 .embla__slide {
   flex: 0 0 var(--slide-size);
