@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler pages dev ./dist",
     "astro": "astro",
     "format:write": "prettier --write . --plugin prettier-plugin-astro --plugin prettier-plugin-tailwindcss"
   },

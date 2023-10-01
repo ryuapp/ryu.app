@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/MarkdownLayout.astro
+slug: privacy
 title: "Privacy Policy"
 description: "Privacy Policy"
 breadcrumbs: []

@@ -1,10 +1,10 @@
 ---
-import MarkdownLayout from "../../layouts/MarkdownLayout.astro"
+import MarkdownLayout from "../layouts/MarkdownLayout.astro"
 import { getCollection } from "astro:content"
 
 export const prerender = true
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("dev")
+  const blogEntries = await getCollection("site")
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
