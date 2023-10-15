@@ -11,6 +11,9 @@ module.exports = {
         sans: "Poppins",
       },
     },
+    screens: {
+      tall: { raw: "(min-height: 500px)" },
+    },
   },
   plugins: [],
 }
