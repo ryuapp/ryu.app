@@ -11,6 +11,13 @@ export interface Props {
 }
 const { title, description } = Astro.props
 const pageTitle = (title ? title + " | " : "") + siteConfig.title
+// URL without trailling slash and extension
+const url = String(Astro.url)
+  .replace(/\.[^/.]+$/, "")
+  .replace(/\/$/, "")
+// Origin URL without trailling slash
+const originUrl = Astro.url.origin.replace(/\/$/, "")
+const canonicalUrl = url.includes(originUrl) ? url : originUrl
 ---
 
 <meta charset="utf-8" />
@@ -18,11 +25,12 @@ const pageTitle = (title ? title + " | " : "") + siteConfig.title
 <title>{pageTitle}</title>
 <meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
 <meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={new URL("/ryuapp.webp", Astro.url)} />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
