@@ -1,10 +1,9 @@
 ---
-import "@fontsource/poppins/400.css"
-import "@fontsource/poppins/700.css"
 import "../styles/base.css"
 import "../styles/embla.css"
 import { siteConfig } from "../config/site.ts"
-import SwupScript from "../utils/swup.astro"
+import "@fontsource/poppins/400.css"
+import "@fontsource/poppins/700.css"
 export interface Props {
   title?: string
   description?: string
@@ -41,4 +40,3 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl
 <meta name="msapplication-TileColor" content="#39b54a" />
 <meta name="theme-color" content="#39b54a" />
 <meta http-equiv="Content-Security-Policy" content="img-src 'self'; object-src 'none'; frame-src 'none';" />
-<SwupScript />

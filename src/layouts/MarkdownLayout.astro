@@ -24,18 +24,18 @@ export const prerender = true
     <BaseHead title={title} description={description} />
   </head>
   <body class="bg-neutral-50 text-neutral-900" ontouchstart="">
-    <div id="swup" class="transition-fade mx-auto max-w-5xl">
-      <main class="mx-5 mt-5">
+    <main class="transition-fade mx-auto max-w-5xl">
+      <div class="mx-5 mt-5">
         <Breadcrumbs title={title} items={breadcrumbs} />
         <div id="markup">
           <slot />
         </div>
-      </main>
+      </div>
       <div class="mb-10 mt-5 flex justify-center">
         <Link href="/">Home</Link>
       </div>
       <Footer />
-    </div>
+    </main>
     <React client:load />
   </body>
 </html>

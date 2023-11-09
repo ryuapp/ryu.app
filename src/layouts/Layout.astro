@@ -14,7 +14,7 @@ const { title, description } = Astro.props
     <BaseHead title={title} description={description} />
   </head>
   <body class="bg-neutral-50 text-neutral-900" ontouchstart="">
-    <main id="swup" class="transition-fade">
+    <main class="transition-fade">
       <slot class="transition" />
     </main>
     <React client:load />
