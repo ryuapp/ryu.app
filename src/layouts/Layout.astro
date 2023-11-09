@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro"
+import { React } from "../utils/react.tsx"
 
 export interface Props {
   title?: string
@@ -16,5 +17,6 @@ const { title, description } = Astro.props
     <main class="transition-fade">
       <slot class="transition" />
     </main>
+    <React client:load />
   </body>
 </html>
