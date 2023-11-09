@@ -2,7 +2,6 @@
 import BaseHead from "../components/BaseHead.astro"
 import Link from "../components/Link.astro"
 import Footer from "../components/Footer.astro"
-import { React } from "../utils/react.tsx"
 import Breadcrumbs, { type Breadcrumb } from "../components/Breadcrumbs.astro"
 
 type Frontmatter = {
@@ -36,6 +35,5 @@ export const prerender = true
       </div>
       <Footer />
     </main>
-    <React client:load />
   </body>
 </html>
