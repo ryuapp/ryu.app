@@ -13,6 +13,8 @@ export default defineConfig({
     tailwind(),
     swup({
       theme: false,
+      containers: ["#main-content"],
+      accessibility: false,
     }),
     svelte(),
   ],

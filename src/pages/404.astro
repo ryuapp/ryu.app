@@ -7,14 +7,12 @@ export const prerender = true
 ---
 
 <Layout title="404" description="You may have used an outdated link, or you may have typed the address incorrectly.">
-  <div class="flex justify-center">
-    <div class="flex h-screen max-w-lg flex-col items-center justify-center">
-      <h1 class="mb-5 text-center text-2xl">404. That’s an error.</h1>
-      <p class="mb-5 text-center">You may have used an outdated link, or you may have typed the address incorrectly.</p>
-      <nav class="mb-5 flex justify-center">
-        <Link href="/">Home</Link>
-      </nav>
-      <Footer />
-    </div>
-  </div>
+  <main class="grid h-screen place-content-center gap-5 text-center">
+    <h1 class="text-2xl">404. That’s an error.</h1>
+    <p>You may have used an outdated link, or you may have typed the address incorrectly.</p>
+    <nav class="flex justify-center">
+      <Link href="/">Home</Link>
+    </nav>
+    <Footer />
+  </main>
 </Layout>

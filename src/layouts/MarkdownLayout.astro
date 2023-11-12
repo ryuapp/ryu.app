@@ -24,18 +24,18 @@ export const prerender = true
     <BaseHead title={title} description={description} />
   </head>
   <body class="bg-neutral-50 text-neutral-900" ontouchstart="">
-    <main class="transition-fade mx-auto max-w-5xl">
-      <div class="mx-5 mt-5">
+    <div id="main-content" class="transition-fade mx-auto max-w-5xl">
+      <main class="p-5">
         <Breadcrumbs title={title} items={breadcrumbs} />
-        <div id="markup">
+        <article id="markup">
           <slot />
-        </div>
-      </div>
-      <div class="mb-10 mt-5 flex justify-center">
-        <Link href="/">Home</Link>
-      </div>
+        </article>
+        <footer class="mt-5 flex justify-center">
+          <Link href="/">Home</Link>
+        </footer>
+      </main>
       <Footer />
-    </main>
+    </div>
     <Svelte client:load />
   </body>
 </html>
