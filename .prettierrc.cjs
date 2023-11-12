@@ -1,6 +1,10 @@
 /** @type {import('prettier').Config} */
 module.exports = {
-  plugins: [require.resolve("prettier-plugin-astro"), require.resolve("prettier-plugin-tailwindcss")],
+  plugins: [
+    require.resolve("prettier-plugin-astro"),
+    require.resolve("prettier-plugin-svelte"),
+    require.resolve("prettier-plugin-tailwindcss"),
+  ],
   overrides: [
     {
       files: [".*", "*.json", "*.md", "*.toml", "*.yml"],
