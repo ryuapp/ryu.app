@@ -3,9 +3,11 @@ import Layout from "../layouts/Layout.astro"
 import Footer from "../components/Footer.astro"
 import RyuappLogo from "../components/icons/ryuapp.astro"
 import Link from "../components/Link.astro"
+
+const description = "Ryu is a frontend developer in Japan."
 ---
 
-<Layout title="" description="Ryu is a frontend developer in Japan.">
+<Layout description={description}>
   <div class="flex justify-center bg-zinc-900 text-white">
     <div class="my-16 flex max-w-lg flex-col items-center justify-center gap-5 tall:my-0 tall:h-screen">
       <div class="flex">
