@@ -16,5 +16,5 @@ const defaultCollection = defineCollection({
 
 export const collections = {
   site: defaultCollection,
-  dev: defaultCollection,
+  projects: defaultCollection,
 }

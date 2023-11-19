@@ -3,7 +3,7 @@
 
   let emblaApi: { scrollPrev: () => void; scrollNext: () => void }
   const options: EmblaOptionsType = { loop: false, duration: 10 }
-  const devList = [
+  const projectList = [
     { name: "Fluent Emoji Picker", description: "Web app to easily copy Fluent Emoji.", slug: "fluent-emoji" },
     { name: "Lslike", description: "Ls command for Windows with Deno.", slug: "lslike" },
   ]
@@ -22,14 +22,14 @@
   on:emblaInit={onInit}
 >
   <div class="mx-10 flex max-w-xs gap-4">
-    {#each devList as dev}
+    {#each projectList as project}
       <a
-        href={"/dev/" + dev.slug}
+        href={"/projects/" + project.slug}
         class="scale-custom min-w-0 flex-[0_0_100%] rounded border p-4 hover:bg-gray-100 active:bg-gray-200"
       >
-        <h2 class="text-xl">{dev.name}</h2>
+        <h2 class="text-xl">{project.name}</h2>
         <hr class="mb-2 border-gray-300" />
-        <p>{dev.description}</p>
+        <p>{project.description}</p>
       </a>
     {/each}
   </div>

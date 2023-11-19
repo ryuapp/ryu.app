@@ -2,7 +2,7 @@
 slug: lslike
 title: "Lslike"
 description: "Ls command for Windows with Deno."
-breadcrumbs: [{ "name": "Development", "href": "/dev" }]
+breadcrumbs: [{ "name": "Projects", "href": "/projects" }]
 ---
 
 # Lslike

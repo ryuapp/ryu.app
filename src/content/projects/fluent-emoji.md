@@ -2,12 +2,12 @@
 slug: fluent-emoji
 title: "Fluent Emoji Picker"
 description: "Web app to easily copy Fluent Emoji."
-breadcrumbs: [{ "name": "Development", "href": "/dev" }]
+breadcrumbs: [{ "name": "Projects", "href": "/projects" }]
 ---
 
 # Fluent Emoji Picker
 
-<img src="/img/dev/fluent-emoji.webp" alt="Fluent Emoji Picker Sample Image" width="1000px" height="360px" loading="eager">
+<img src="/img/projects/fluent-emoji.webp" alt="Fluent Emoji Picker Sample Image" width="1000px" height="360px" loading="eager">
 
 [fluentemoji.ryu.app](https://fluentemoji.ryu.app/)
 
