@@ -4,8 +4,9 @@
   let emblaApi: { scrollPrev: () => void; scrollNext: () => void }
   const options: EmblaOptionsType = { loop: false, duration: 10 }
   const projectList = [
+    { name: "enogu", description: "A library for painting your terminal with colors.", slug: "enogu" },
+    { name: "lslike", description: "Ls command for Windows with Deno.", slug: "lslike" },
     { name: "Fluent Emoji Picker", description: "Web app to easily copy Fluent Emoji.", slug: "fluent-emoji" },
-    { name: "Lslike", description: "Ls command for Windows with Deno.", slug: "lslike" },
   ]
   const onInit = (event: { detail: EmblaCarouselType }) => {
     emblaApi = event.detail
