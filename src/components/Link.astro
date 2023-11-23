@@ -11,6 +11,6 @@ const { href, variant = "default" } = Astro.props
 const customCss = variant === "default" ? cssDefault : cssMenu
 ---
 
-<a href={href} class={"scale-custom cursor-pointer rounded-md bg-transparent px-4 py-2" + " " + customCss}>
+<a href={href} class="scale-custom cursor-pointer rounded-md bg-transparent px-4 py-2" class:list={customCss}>
   <slot />
 </a>

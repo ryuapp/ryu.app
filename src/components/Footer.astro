@@ -5,6 +5,7 @@ interface Props {
   hiddenIcons?: boolean
 }
 const { isDark = false, hiddenIcons = false } = Astro.props
+const copyrightColor = isDark ? "text-gray-400" : "text-gray-500"
 ---
 
 <footer>
@@ -17,11 +18,7 @@ const { isDark = false, hiddenIcons = false } = Astro.props
       </div>
     )
   }
-  <p
-    class={isDark
-      ? "mx-auto max-w-sm py-5 text-center text-sm text-gray-400"
-      : "mx-auto max-w-sm py-5 text-center text-sm text-gray-500"}
-  >
+  <p class="mx-auto my-4 max-w-sm text-center text-sm" class:list={copyrightColor}>
     © 2023 <span translate="no">ryu.app</span>
   </p>
 </footer>
