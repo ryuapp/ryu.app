@@ -1,6 +1,11 @@
+---
+const { isDark = false } = Astro.props
+---
+
 <a href="https://github.com/ryuapp/" class="duration-[350ms] active:scale-90">
   <svg
-    class="h-8 w-8 fill-gray-500 transition hover:fill-github"
+    class="h-8 w-8 transition"
+    class:list={isDark ? "fill-gray-500 hover:fill-white" : "fill-gray-500 hover:fill-github"}
     role="img"
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"

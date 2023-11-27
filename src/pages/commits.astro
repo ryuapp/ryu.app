@@ -1,0 +1,63 @@
+---
+import Footer from "../components/Footer.astro"
+import Link from "../components/Link.astro"
+import Layout from "../layouts/Layout.astro"
+
+const data = await fetch("https://api.github.com/repos/ryuapp/ryu.app/commits").then((res) => res.json())
+const commits = []
+for (let i = 0; i < 7 && i < data.length; i++) {
+  const emoji = String.fromCodePoint(Number(data[i].commit.message.codePointAt(0)))
+  const message = data[i].commit.message.slice(2).replace(/\s+/, "")
+  const tmpDate = new Date(data[i].commit.committer.date)
+  const currentDate = new Date()
+  const date = tmpDate.toLocaleDateString(undefined, {
+    year: tmpDate.getFullYear() === currentDate.getFullYear() ? undefined : "numeric",
+    month: "short",
+    day: "numeric",
+  })
+
+  const commit = {
+    emoji,
+    message,
+    date,
+  }
+  commits.push(commit)
+}
+
+const title = "Commits"
+const description = "commits of ryu.app"
+export const prerender = true
+---
+
+<Layout title={title} description={description}>
+  <div class="flex justify-center bg-zinc-900 text-white">
+    <div class="my-16 flex max-w-lg flex-col items-center justify-center gap-4">
+      <h1 class="text-3xl">Commits</h1>
+      <p class="text-neutral-400">
+        Commits of <a href="https://github.com/ryuapp/ryu.app" class="text-brand">ryu.app</a>
+      </p>
+      <ul
+        aria-label="commits of ryu.app"
+        class="relative my-4 flex flex-col gap-12 pb-8 pl-8 before:absolute before:left-8 before:top-0 before:h-full before:-translate-x-1/2 before:border before:border-dashed before:border-gray-400 after:absolute after:bottom-6 after:left-8 after:top-6 after:-translate-x-1/2 after:border after:border-gray-400"
+      >
+        {
+          commits.map((item, i) => {
+            return (
+              <li role="article" class="relative pl-8 ">
+                <span class="absolute left-0 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-neutral-50 text-slate-700 ring-2 ring-white ">
+                  {item.emoji}
+                </span>
+                <div class="flex flex-1 flex-col gap-0">
+                  <h2 class="text-base font-medium"> {item.message} </h2>
+                  <p class="text-sm text-neutral-400">{item.date}</p>
+                </div>
+              </li>
+            )
+          })
+        }
+      </ul>
+      <Link href="/" variant="menu">Home</Link>
+      <Footer isDark={true} />
+    </div>
+  </div>
+</Layout>
