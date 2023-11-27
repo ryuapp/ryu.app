@@ -36,7 +36,7 @@ export const prerender = true
     <div class="my-16 flex max-w-lg flex-col items-center justify-center gap-4">
       <h1 class="text-3xl">Commits</h1>
       <p class="text-neutral-400">
-        Commits of <a href="https://github.com/ryuapp/ryu.app" class="text-brand">ryu.app</a>
+        Commits of <a href="https://github.com/ryuapp/ryu.app" class="text-brand underline">ryu.app</a>
       </p>
       <ul
         aria-label="commits of ryu.app"
@@ -45,7 +45,7 @@ export const prerender = true
         {
           commits.map((item, i) => {
             return (
-              <li role="article" class="relative pl-8 ">
+              <li class="relative pl-8 ">
                 <span class="absolute left-0 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-neutral-50 text-slate-700 ring-2 ring-white ">
                   {item.emoji}
                 </span>
