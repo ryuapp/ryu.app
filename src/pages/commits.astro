@@ -6,8 +6,10 @@ import Layout from "../layouts/Layout.astro"
 const data = await fetch("https://api.github.com/repos/ryuapp/ryu.app/commits").then((res) => res.json())
 const commits = []
 for (let i = 0; i < 7 && i < data.length; i++) {
-  const emoji = String.fromCodePoint(Number(data[i].commit.message.codePointAt(0)))
-  const message = data[i].commit.message.slice(2).replace(/\s+/, "")
+  const emojiCode = Number(data[i].commit.message.codePointAt(0))
+  const emoji = String.fromCodePoint(emojiCode)
+  const sliceNum = emojiCode > 65535 ? 2 : 1
+  const message = data[i].commit.message.slice(sliceNum).replace(/\s+/, "")
   const tmpDate = new Date(data[i].commit.committer.date)
   const currentDate = new Date()
   const date = tmpDate.toLocaleDateString(undefined, {
