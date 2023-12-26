@@ -12,4 +12,7 @@ export default defineConfig({
   build: {
     format: "file",
   },
+  prefetch: {
+    defaultStrategy: "viewport",
+  },
 })
