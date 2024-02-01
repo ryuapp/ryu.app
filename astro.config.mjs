@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind"
 // https://astro.build/config
 export default defineConfig({
   site: "https://ryu.app",
-  output: "server",
+  output: "hybrid",
   adapter: cloudflare(),
   integrations: [tailwind(), svelte()],
   build: {

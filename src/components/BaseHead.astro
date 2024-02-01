@@ -1,8 +1,7 @@
 ---
 import "../styles/base.css"
 import { siteConfig } from "../config/site.ts"
-import "@fontsource/poppins/400.css"
-import "@fontsource/poppins/700.css"
+import { AstroFont } from "astro-font"
 import { ViewTransitions } from "astro:transitions"
 import Swup from "../components/utils/Swup.astro"
 
@@ -23,6 +22,19 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<AstroFont
+  config={[
+    {
+      src: [],
+      name: "Poppins",
+      googleFontsURL: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap",
+      preload: true,
+      display: "swap",
+      selector: "body",
+      fallback: "sans-serif",
+    },
+  ]}
+/>
 <title>{pageTitle}</title>
 <meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
