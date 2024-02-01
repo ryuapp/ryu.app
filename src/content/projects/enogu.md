@@ -10,3 +10,7 @@ breadcrumbs: [{ "name": "Projects", "href": "/projects" }]
 [github.com/ryuapp/enogu](https://github.com/ryuapp/enogu)
 
 **enogu** is a library for painting your terminal with colors.
+
+## Technology Stack
+
+- Deno
