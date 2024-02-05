@@ -25,9 +25,19 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl
 <AstroFont
   config={[
     {
-      src: [],
       name: "Poppins",
-      googleFontsURL: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap",
+      src: [
+        {
+          style: "normal",
+          weight: 400,
+          path: "https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2",
+        },
+        {
+          style: "bold",
+          weight: 700,
+          path: "https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2",
+        },
+      ],
       preload: true,
       display: "swap",
       selector: "body",
