@@ -26,10 +26,6 @@ html.is-animating .transition-fade {
   opacity: 0;
 }
 
-.h-screen {
-  height: 100svh;
-}
-
 .py-05 {
   /* Additional vertical padding used by kbd tag. */
   padding-top: 0.125rem;
