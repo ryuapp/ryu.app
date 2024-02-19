@@ -1,7 +1,6 @@
 ---
 import "../styles/base.css"
 import { siteConfig } from "../config/site.ts"
-import { AstroFont } from "astro-font"
 import { ViewTransitions } from "astro:transitions"
 import Swup from "../components/utils/Swup.astro"
 
@@ -22,29 +21,6 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<AstroFont
-  config={[
-    {
-      name: "Poppins",
-      src: [
-        {
-          style: "normal",
-          weight: 400,
-          path: "https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2",
-        },
-        {
-          style: "bold",
-          weight: 700,
-          path: "https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2",
-        },
-      ],
-      preload: true,
-      display: "swap",
-      selector: "body",
-      fallback: "sans-serif",
-    },
-  ]}
-/>
 <title>{pageTitle}</title>
 <meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
@@ -56,6 +32,8 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={new URL("/og.webp", Astro.url)} />
 <meta name="twitter:card" content="summary_large_image" />
+<link as="font" rel="preload" href="/font/Poppins-Regular.woff2" type="font/woff2" />
+<link as="font" rel="preload" href="/font/Poppins-Bold.woff2" type="font/woff2" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
