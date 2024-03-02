@@ -32,14 +32,14 @@ html.is-animating .transition-fade {
   font-style: normal;
   font-family: Poppins;
   font-display: swap;
-  src: url(/font/Poppins-Regular.woff2);
+  src: url(/font/poppins-regular.woff2);
 }
 @font-face {
   font-weight: 700;
   font-style: normal;
   font-family: Poppins;
   font-display: swap;
-  src: url(/font/Poppins-Bold.woff2);
+  src: url(/font/poppins-bold.woff2);
 }
 
 .py-05 {
