@@ -1,5 +1,6 @@
 <script lang="ts">
-  import emblaCarouselSvelte, { type EmblaCarouselType, type EmblaOptionsType } from "embla-carousel-svelte"
+  import { type EmblaCarouselType, type EmblaOptionsType } from "embla-carousel"
+  import emblaCarouselSvelte from "embla-carousel-svelte"
 
   let emblaApi: { scrollPrev: () => void; scrollNext: () => void }
   const options: EmblaOptionsType = { loop: false, duration: 10 }
