@@ -2,7 +2,6 @@
 slug: privacy
 title: "Privacy Policy"
 description: "Privacy Policy"
-breadcrumbs: []
 ---
 
 # Privacy Policy

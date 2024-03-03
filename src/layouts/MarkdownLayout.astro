@@ -7,14 +7,14 @@ import Svelte from "../components/utils/Svelte.svelte"
 type Frontmatter = {
   title: string
   description?: string
-  breadcrumbs?: Array<Breadcrumb>
 }
 type Props = {
   frontmatter: Frontmatter
+  breadcrumbs?: Array<Breadcrumb>
 }
 
-const { frontmatter } = Astro.props
-const { title, description, breadcrumbs } = frontmatter
+const { frontmatter, breadcrumbs } = Astro.props
+const { title, description } = frontmatter
 ---
 
 <html lang="en">

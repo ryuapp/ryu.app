@@ -2,7 +2,6 @@
 slug: fluent-emoji
 title: "Fluent Emoji Picker"
 description: "Web app to easily copy Fluent Emoji."
-breadcrumbs: [{ "name": "Projects", "href": "/projects" }]
 ---
 
 # Fluent Emoji Picker

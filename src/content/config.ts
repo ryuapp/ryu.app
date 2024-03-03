@@ -5,12 +5,14 @@ const defaultCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    breadcrumbs: z.array(
-      z.object({
-        name: z.string(),
-        href: z.string(),
-      }),
-    ),
+    breadcrumbs: z
+      .array(
+        z.object({
+          name: z.string(),
+          href: z.string(),
+        }),
+      )
+      .optional(),
   }),
 })
 

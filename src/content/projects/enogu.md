@@ -2,7 +2,6 @@
 slug: enogu
 title: "enogu"
 description: "A library for painting your terminal with colors"
-breadcrumbs: [{ "name": "Projects", "href": "/projects" }]
 ---
 
 # enogu
