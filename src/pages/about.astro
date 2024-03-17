@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Footer from "../components/Footer.astro"
+import Link from "../components/Link.astro"
+import RyuappLogo from "../components/icons/ryuapp.astro"
+
+const title = "About"
+const description = "I'm Ryu, a frontend developer. I like developing or contributing to open source projects."
+---
+
+<Layout title={title} description={description}>
+  <div class="flex min-h-svh justify-center bg-zinc-900 text-white">
+    <div class="flex max-w-lg flex-col items-center justify-center gap-4">
+      <div class="mx-2 space-x-5 md:flex">
+        <div class="ml-4 flex flex-col justify-center">
+          <RyuappLogo />
+        </div>
+        <div class="text-sm text-neutral-300">
+          <h1 class="text-xl text-white">About</h1>
+          <p>I'm <span class="text-brand">Ryu</span>, a frontend developer.</p>
+          <p>
+            I like developing or contributing to open source projects. Recently, I have translated parts of <span
+              class="text-[#fd3f26]">Astro</span
+            > doc and added some features to <span class="text-[#E36002]">Hono</span>. I believe that even the smallest
+            contributions can lead to a better future for the web.
+          </p>
+          <p>
+            The lang I use most is <span class="text-[#358EF1]">TypeScript</span> and my favorite runtime is Deno. Besides,
+            I use <span class="text-[#f7a41d]">Zig</span> for <span class="text-[#6485ff]">Wasm</span> or client tools.
+          </p>
+        </div>
+      </div>
+      <Link href="/" variant="dark">Home</Link>
+      <Footer isDark={true} />
+    </div>
+  </div>
+</Layout>

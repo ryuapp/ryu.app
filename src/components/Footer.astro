@@ -1,24 +1,17 @@
 ---
-import GitHubIcon from "../components/icons/GitHubIcon.astro"
 interface Props {
   isDark?: boolean
   hiddenIcons?: boolean
 }
 const { isDark = false, hiddenIcons = false } = Astro.props
-const copyrightColor = isDark ? "text-gray-400" : "text-gray-500"
+const textColor = isDark ? "text-gray-400" : "text-gray-500"
 ---
 
-<footer>
-  {
-    hiddenIcons ? (
-      ""
-    ) : (
-      <div class="flex justify-center">
-        <GitHubIcon isDark={isDark} />
-      </div>
-    )
-  }
-  <p class="mx-auto my-4 max-w-sm text-center text-sm" class:list={copyrightColor}>
-    © 2024 <span translate="no">ryu.app</span>
-  </p>
+<footer class="mx-auto">
+  <div class="mx-auto max-w-sm text-center text-sm" class:list={textColor}>
+    <p class="flex justify-center space-x-1.5">
+      <a href="https://github.com/ryuapp" class="hover:underline" title="GitHub">GitHub</a>
+      <a href="/privacy" class="hover:underline" title="Privacy Policy">Privacy</a>
+    </p>
+  </div>
 </footer>

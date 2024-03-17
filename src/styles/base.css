@@ -60,11 +60,11 @@ html.is-animating .transition-fade {
 }
 
 #markup li > p + p {
-  @apply mt-6;
+  @apply mt-3;
 }
 
 #markup p {
-  @apply text-lg text-zinc-600;
+  @apply text-base text-zinc-600;
 }
 #markup strong {
   @apply font-semibold;
@@ -79,27 +79,27 @@ html.is-animating .transition-fade {
 }
 
 #markup h1 {
-  @apply mb-4 mt-6 text-[2.5rem] font-semibold leading-tight;
+  @apply mb-2 mt-3 text-2xl font-semibold leading-tight;
 }
 
 #markup h2 {
-  @apply mb-4 mt-10 text-3xl font-semibold leading-tight;
+  @apply mb-2 mt-5 text-xl font-semibold leading-tight;
 }
 
 #markup h3 {
-  @apply mb-4 mt-6 text-lg font-semibold leading-snug;
+  @apply mb-2 mt-3 text-lg font-semibold leading-snug;
 }
 
 #markup h4 {
-  @apply mb-4 mt-6 text-base font-semibold leading-none;
+  @apply mb-2 mt-3 text-base font-semibold leading-none;
 }
 
 #markup h5 {
-  @apply mb-4 mt-6 text-sm font-semibold leading-tight;
+  @apply mb-2 mt-3 text-sm font-semibold leading-tight;
 }
 
 #markup h6 {
-  @apply mb-4 mt-6 text-sm font-semibold leading-tight text-gray-600;
+  @apply mb-2 mt-3 text-sm font-semibold leading-tight text-gray-600;
 }
 
 #markup blockquote {

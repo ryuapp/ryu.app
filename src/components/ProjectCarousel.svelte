@@ -23,15 +23,15 @@
   use:emblaCarouselSvelte={{ options, plugins: [] }}
   on:emblaInit={onInit}
 >
-  <div class="mx-10 flex max-w-xs gap-4">
+  <div class="mx-10 flex gap-4">
     {#each projectList as project}
       <a
         href={"/projects/" + project.slug}
-        class="scale-custom min-w-0 flex-[0_0_100%] rounded border p-4 hover:bg-gray-100 active:bg-gray-200"
+        class="scale-custom min-w-0 flex-[0_0_100%] rounded border p-3 hover:bg-gray-100 active:bg-gray-200"
       >
-        <h2 class="text-xl">{project.name}</h2>
+        <h2 class="text-lg">{project.name}</h2>
         <hr class="mb-2 border-gray-300" />
-        <p>{project.description}</p>
+        <p class="text-sm">{project.description}</p>
       </a>
     {/each}
   </div>

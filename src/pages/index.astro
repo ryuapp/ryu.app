@@ -10,13 +10,15 @@ const description = "Ryu is a frontend developer in Japan."
 
 <Layout description={description}>
   <div class="flex min-h-svh justify-center bg-zinc-900 text-white">
-    <div class="flex max-w-lg flex-col items-center justify-center gap-4">
-      <div class="flex">
-        <RyuappLogo />
+    <div class="flex max-w-lg flex-col justify-center gap-4">
+      <div>
+        <div class="flex justify-center">
+          <RyuappLogo />
+        </div>
+        <h1 class="text-lg font-bold">Ryu</h1>
+        <p class="text-neutral-400">Frontend Developer</p>
       </div>
-      <h1 class="text-center text-2xl text-neutral-400">
-        <span class="text-brand">Ryu</span> is a frontend developer in Japan.
-      </h1>
+
       <nav class="grid justify-items-start gap-1">
         {
           siteConfig.mainNav.map((link) => (
