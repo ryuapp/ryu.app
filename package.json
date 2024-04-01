@@ -1,7 +1,7 @@
 {
   "name": "ryu.app",
+  "private": "true",
   "type": "module",
-  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
