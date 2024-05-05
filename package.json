@@ -11,7 +11,7 @@
     "format": "prettier --write --cache --cache-strategy metadata ."
   },
   "dependencies": {
-    "@astrojs/cloudflare": "10.0.2",
+    "@astrojs/cloudflare": "10.2.5",
     "@astrojs/svelte": "^5.2.0",
     "@astrojs/tailwind": "^5.0.3",
     "astro": "^4.4.9",
