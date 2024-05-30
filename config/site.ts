@@ -1,4 +1,5 @@
 export const siteConfig = {
+  author: "ryu",
   title: "ryu.app",
   mainNav: [
     {

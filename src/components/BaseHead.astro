@@ -32,6 +32,7 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={new URL("/og.webp", Astro.url)} />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="author" content={siteConfig.author} />
 <link rel="preload" as="font" crossorigin href="/font/poppins-regular.woff2" type="font/woff2" />
 <link rel="preload" as="font" crossorigin href="/font/poppins-bold.woff2" type="font/woff2" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
