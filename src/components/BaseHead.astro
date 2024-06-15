@@ -2,7 +2,6 @@
 import "../styles/base.css"
 import { siteConfig } from "../../config/site.ts"
 import { ViewTransitions } from "astro:transitions"
-import Swup from "../components/utils/Swup.astro"
 
 export interface Props {
   title?: string
@@ -43,4 +42,3 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl
 <meta name="msapplication-TileColor" content="#39b54a" />
 <meta name="theme-color" content="#39b54a" />
 <ViewTransitions />
-<Swup />

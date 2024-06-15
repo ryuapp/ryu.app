@@ -1,6 +1,5 @@
 ---
 import BaseHead from "../components/BaseHead.astro"
-import Svelte from "../components/utils/Svelte.svelte"
 
 export interface Props {
   title?: string
@@ -17,6 +16,5 @@ const { title, description } = Astro.props
     <div id="main-content" class="transition-fade">
       <slot class="transition" />
     </div>
-    <Svelte client:load />
   </body>
 </html>

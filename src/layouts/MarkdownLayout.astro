@@ -2,7 +2,6 @@
 import BaseHead from "../components/BaseHead.astro"
 import Footer from "../components/Footer.astro"
 import Breadcrumbs, { type Breadcrumb } from "../components/Breadcrumbs.astro"
-import Svelte from "../components/utils/Svelte.svelte"
 
 type Frontmatter = {
   title: string
@@ -31,6 +30,5 @@ const { title, description } = frontmatter
       </main>
       <Footer />
     </div>
-    <Svelte client:load />
   </body>
 </html>
