@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "wrangler pages dev ./dist",
     "astro": "astro",
-    "format": "prettier --write --cache --cache-strategy metadata ."
+    "format": "biome format --write ."
   },
   "dependencies": {
     "@astrojs/cloudflare": "10.2.6",
@@ -16,13 +16,10 @@
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.11.5",
     "embla-carousel-svelte": "^8.1.6",
-    "svelte": "^4.2.18",
-    "tailwindcss": "^3.4.4"
+    "svelte": "^4.2.18"
   },
   "devDependencies": {
-    "prettier": "^3.3.2",
-    "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-svelte": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14"
+    "@biomejs/biome": "^1.8.3",
+    "tailwindcss": "^3.4.4"
   }
 }

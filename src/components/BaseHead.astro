@@ -1,21 +1,21 @@
 ---
-import "../styles/base.css"
-import { siteConfig } from "../../config/site.ts"
-import { ViewTransitions } from "astro:transitions"
+import "../styles/base.css";
+import { siteConfig } from "../../config/site.ts";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
-  title?: string
-  description?: string
+  title?: string;
+  description?: string;
 }
-const { title, description } = Astro.props
-const pageTitle = (title ? title + " | " : "") + siteConfig.title
+const { title, description } = Astro.props;
+const pageTitle = (title ? title + " | " : "") + siteConfig.title;
 // URL without trailling slash and extension
 const url = String(Astro.url)
   .replace(/\.[^/.]+$/, "")
-  .replace(/\/$/, "")
+  .replace(/\/$/, "");
 // Origin URL without trailling slash
-const originUrl = Astro.url.origin.replace(/\/$/, "")
-const canonicalUrl = url.includes(originUrl) ? url : originUrl
+const originUrl = Astro.url.origin.replace(/\/$/, "");
+const canonicalUrl = url.includes(originUrl) ? url : originUrl;
 ---
 
 <meta charset="utf-8" />

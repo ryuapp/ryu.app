@@ -1,10 +1,10 @@
 ---
 interface Props {
-  isDark?: boolean
-  hiddenIcons?: boolean
+  isDark?: boolean;
+  hiddenIcons?: boolean;
 }
-const { isDark = false, hiddenIcons = false } = Astro.props
-const textColor = isDark ? "text-gray-400" : "text-gray-500"
+const { isDark = false, hiddenIcons = false } = Astro.props;
+const textColor = isDark ? "text-gray-400" : "text-gray-500";
 ---
 
 <footer class="mx-auto my-2">

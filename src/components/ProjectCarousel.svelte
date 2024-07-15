@@ -1,20 +1,28 @@
 <script lang="ts">
-  import { type EmblaCarouselType, type EmblaOptionsType } from "embla-carousel"
-  import emblaCarouselSvelte from "embla-carousel-svelte"
+import { type EmblaCarouselType, type EmblaOptionsType } from "embla-carousel";
+import emblaCarouselSvelte from "embla-carousel-svelte";
 
-  let emblaApi: { scrollPrev: () => void; scrollNext: () => void }
-  const options: EmblaOptionsType = { loop: false, duration: 10 }
-  const projectList = [
-    { name: "enogu", description: "A library for painting your terminal with colors.", slug: "enogu" },
-    { name: "Fluent Emoji Picker", description: "Web app to easily copy Fluent Emoji.", slug: "fluent-emoji" },
-  ]
-  const onInit = (event: { detail: EmblaCarouselType }) => {
-    emblaApi = event.detail
-  }
-  const onKeydown = (event: KeyboardEvent) => {
-    if (event.key === "ArrowLeft") emblaApi.scrollPrev()
-    if (event.key === "ArrowRight") emblaApi.scrollNext()
-  }
+let emblaApi: { scrollPrev: () => void; scrollNext: () => void };
+const options: EmblaOptionsType = { loop: false, duration: 10 };
+const projectList = [
+  {
+    name: "enogu",
+    description: "A library for painting your terminal with colors.",
+    slug: "enogu",
+  },
+  {
+    name: "Fluent Emoji Picker",
+    description: "Web app to easily copy Fluent Emoji.",
+    slug: "fluent-emoji",
+  },
+];
+const onInit = (event: { detail: EmblaCarouselType }) => {
+  emblaApi = event.detail;
+};
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === "ArrowLeft") emblaApi.scrollPrev();
+  if (event.key === "ArrowRight") emblaApi.scrollNext();
+};
 </script>
 
 <div

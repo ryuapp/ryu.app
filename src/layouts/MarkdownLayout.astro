@@ -1,19 +1,19 @@
 ---
-import BaseHead from "../components/BaseHead.astro"
-import Footer from "../components/Footer.astro"
-import Breadcrumbs, { type Breadcrumb } from "../components/Breadcrumbs.astro"
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Breadcrumbs, { type Breadcrumb } from "../components/Breadcrumbs.astro";
 
 type Frontmatter = {
-  title: string
-  description?: string
-}
+  title: string;
+  description?: string;
+};
 type Props = {
-  frontmatter: Frontmatter
-  breadcrumbs?: Array<Breadcrumb>
-}
+  frontmatter: Frontmatter;
+  breadcrumbs?: Array<Breadcrumb>;
+};
 
-const { frontmatter, breadcrumbs } = Astro.props
-const { title, description } = frontmatter
+const { frontmatter, breadcrumbs } = Astro.props;
+const { title, description } = frontmatter;
 ---
 
 <html lang="en">
