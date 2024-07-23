@@ -12,14 +12,14 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "10.2.6",
-    "@astrojs/svelte": "^5.6.0",
+    "@astrojs/svelte": "^5.7.0",
     "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.11.5",
-    "embla-carousel-svelte": "^8.1.6",
+    "astro": "^4.12.2",
+    "embla-carousel-svelte": "^8.1.7",
     "svelte": "^4.2.18"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.6"
   }
 }
