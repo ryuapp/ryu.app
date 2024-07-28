@@ -5,12 +5,15 @@ import Link from "../../components/Link.astro";
 import ProjectCarousel from "../../components/ProjectCarousel.svelte";
 
 const title = "Projects";
-const description = "Ryu's projects. Software, web application, libary, CLI, etc.";
+const description =
+  "Ryu's projects. Software, web application, libary, CLI, etc.";
 ---
 
 <Layout title={title} description={description}>
   <div class="flex justify-center overflow-hidden">
-    <div class="flex min-h-svh max-w-lg flex-col items-center justify-center gap-4 py-2">
+    <div
+      class="flex min-h-svh max-w-lg flex-col items-center justify-center gap-4 py-2"
+    >
       <h1 class="text-center text-2xl">{title}</h1>
       <nav class="flex h-32 max-w-[20rem] flex-col justify-center">
         <ProjectCarousel client:load />

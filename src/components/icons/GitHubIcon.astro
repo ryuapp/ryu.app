@@ -7,7 +7,9 @@ const { isDark = false } = Astro.props;
 <a href={siteConfig.links.github} class="duration-[350ms] active:scale-90">
   <svg
     class="h-6 w-6 transition"
-    class:list={isDark ? "fill-gray-500 hover:fill-white" : "fill-gray-500 hover:fill-github"}
+    class:list={isDark
+      ? "fill-gray-500 hover:fill-white"
+      : "fill-gray-500 hover:fill-github"}
     role="img"
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"

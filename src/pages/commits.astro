@@ -3,7 +3,9 @@ import Footer from "../components/Footer.astro";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 
-const data = await fetch("https://api.github.com/repos/ryuapp/ryu.app/commits").then((res) => res.json());
+const data = await fetch(
+  "https://api.github.com/repos/ryuapp/ryu.app/commits",
+).then((res) => res.json());
 const commits = [];
 for (let i = 0; i < 7 && i < data.length; i++) {
   const emojiCode = Number(data[i].commit.message.codePointAt(0));
@@ -13,7 +15,10 @@ for (let i = 0; i < 7 && i < data.length; i++) {
   const tmpDate = new Date(data[i].commit.committer.date);
   const currentDate = new Date();
   const date = tmpDate.toLocaleDateString(undefined, {
-    year: tmpDate.getFullYear() === currentDate.getFullYear() ? undefined : "numeric",
+    year:
+      tmpDate.getFullYear() === currentDate.getFullYear()
+        ? undefined
+        : "numeric",
     month: "short",
     day: "numeric",
   });
@@ -35,7 +40,10 @@ const description = "Commits of ryu.app on GitHub.";
     <div class="flex max-w-lg flex-col items-center justify-center gap-4 py-2">
       <h1 class="text-2xl">Commits</h1>
       <p class="text-sm text-neutral-400">
-        Commits of <a href="https://github.com/ryuapp/ryu.app" class="text-brand underline">ryu.app</a>
+        Commits of <a
+          href="https://github.com/ryuapp/ryu.app"
+          class="text-brand underline">ryu.app</a
+        >
       </p>
       <ul
         aria-label="commits of ryu.app"
@@ -53,7 +61,7 @@ const description = "Commits of ryu.app on GitHub.";
                   <p class="text-xs text-neutral-400">{item.date}</p>
                 </div>
               </li>
-            )
+            );
           })
         }
       </ul>

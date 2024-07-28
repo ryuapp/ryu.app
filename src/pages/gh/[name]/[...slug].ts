@@ -10,5 +10,8 @@ export const GET: APIRoute = ({ params, redirect }) => {
 
   if (!slug) return redirect("/");
 
-  return redirect(`https://raw.githubusercontent.com/ryuapp/${repo}/${branch}/${slug}`, 301);
+  return redirect(
+    `https://raw.githubusercontent.com/ryuapp/${repo}/${branch}/${slug}`,
+    301,
+  );
 };

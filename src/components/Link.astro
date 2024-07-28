@@ -10,9 +10,14 @@ const cssMenu =
   "cursor-default text-center text-lg hover:bg-zinc-800/50 hover:!text-brand active:bg-zinc-800 active:text-green-500";
 
 const { href, variant = "default" } = Astro.props;
-const customCss = variant === "default" ? cssDefault : variant === "dark" ? cssDark : cssMenu;
+const customCss =
+  variant === "default" ? cssDefault : variant === "dark" ? cssDark : cssMenu;
 ---
 
-<a href={href} class="scale-custom cursor-pointer rounded-md bg-transparent px-4 py-2 text-sm" class:list={customCss}>
+<a
+  href={href}
+  class="scale-custom cursor-pointer rounded-md bg-transparent px-4 py-2 text-sm"
+  class:list={customCss}
+>
   <slot />
 </a>
