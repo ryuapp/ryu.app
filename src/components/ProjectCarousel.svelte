@@ -9,6 +9,11 @@
   const options: EmblaOptionsType = { loop: false, duration: 10 };
   const projectList = [
     {
+      name: "Hono Hacker News",
+      description: "A Hacker News clone made with Hono.",
+      slug: "hono-hacker-news",
+    },
+    {
       name: "enogu",
       description: "A library for painting your terminal with colors.",
       slug: "enogu",
