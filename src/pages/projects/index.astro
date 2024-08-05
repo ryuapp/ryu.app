@@ -7,6 +7,23 @@ import ProjectCarousel from "../../components/ProjectCarousel.svelte";
 const title = "Projects";
 const description =
   "Ryu's projects. Software, web application, libary, CLI, etc.";
+const projects = [
+  {
+    name: "Hono Hacker News",
+    description: "A Hacker News clone made with Hono.",
+    slug: "hono-hacker-news",
+  },
+  {
+    name: "enogu",
+    description: "A library for painting your terminal with colors.",
+    slug: "enogu",
+  },
+  {
+    name: "Fluent Emoji Picker",
+    description: "Web app to easily copy Fluent Emoji.",
+    slug: "fluent-emoji",
+  },
+];
 ---
 
 <Layout title={title} description={description}>
@@ -16,7 +33,7 @@ const description =
     >
       <h1 class="text-center text-2xl">{title}</h1>
       <nav class="flex h-32 max-w-[20rem] flex-col justify-center">
-        <ProjectCarousel client:load />
+        <ProjectCarousel projects={projects} client:load />
       </nav>
       <div class="flex justify-center">
         <Link href="/">Home</Link>

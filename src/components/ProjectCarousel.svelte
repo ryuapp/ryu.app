@@ -5,25 +5,14 @@
   } from "embla-carousel";
   import emblaCarouselSvelte from "embla-carousel-svelte";
 
+  export let projects: Array<{
+    name: string;
+    description: string;
+    slug: string;
+  }>;
+
   let emblaApi: { scrollPrev: () => void; scrollNext: () => void };
   const options: EmblaOptionsType = { loop: false, duration: 10 };
-  const projectList = [
-    {
-      name: "Hono Hacker News",
-      description: "A Hacker News clone made with Hono.",
-      slug: "hono-hacker-news",
-    },
-    {
-      name: "enogu",
-      description: "A library for painting your terminal with colors.",
-      slug: "enogu",
-    },
-    {
-      name: "Fluent Emoji Picker",
-      description: "Web app to easily copy Fluent Emoji.",
-      slug: "fluent-emoji",
-    },
-  ];
   const onInit = (event: { detail: EmblaCarouselType }) => {
     emblaApi = event.detail;
   };
@@ -39,7 +28,7 @@
   on:emblaInit={onInit}
 >
   <div class="mx-10 flex gap-4">
-    {#each projectList as project}
+    {#each projects as project}
       <a
         href={"/projects/" + project.slug}
         class="scale-custom min-w-0 flex-[0_0_100%] rounded border p-3 hover:bg-gray-100 active:bg-gray-200"
