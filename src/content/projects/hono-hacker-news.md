@@ -6,7 +6,7 @@ description: "A Hacker News clone made with Hono."
 
 # Hono Hacker News
 
-<img src="/img/projects/hono-hacker-news.webp" alt="Hono Hacker News" width="1000px" height="360px" loading="eager">
+<img src="/img/projects/hono-hacker-news.webp" alt="Hono Hacker News" width="950px" height="500px" loading="eager">
 
 Website: https://hono-hacker-news.deno.dev \
 GitHub: https://github.com/ryuapp/hono-hacker
