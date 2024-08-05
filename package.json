@@ -11,17 +11,17 @@
     "format": "prettier --write --cache --cache-strategy metadata ."
   },
   "dependencies": {
-    "@astrojs/cloudflare": "10.2.6",
+    "@astrojs/cloudflare": "11.0.4",
     "@astrojs/svelte": "^5.7.0",
     "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.12.2",
-    "embla-carousel-svelte": "^8.1.7",
+    "astro": "^4.13.1",
+    "embla-carousel-svelte": "^8.1.8",
     "svelte": "^4.2.18"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^3.2.6",
-    "tailwindcss": "^3.4.6"
+    "tailwindcss": "^3.4.7"
   }
 }
