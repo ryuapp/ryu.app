@@ -6,7 +6,7 @@ description: "Web app to easily copy Fluent Emoji."
 
 # Fluent Emoji Picker
 
-<img src="/img/projects/fluent-emoji.webp" alt="Fluent Emoji Picker Sample Image" width="1000px" height="360px" loading="eager">
+<img src="/img/projects/fluent-emoji.webp" alt="Fluent Emoji Picker Sample Image" width="900px" height="400px" loading="eager">
 
 [fluentemoji.ryu.app](https://fluentemoji.ryu.app/)
 
