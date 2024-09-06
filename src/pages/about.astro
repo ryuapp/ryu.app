@@ -11,31 +11,34 @@ const description =
 
 <Layout title={title} description={description}>
   <div class="flex min-h-svh justify-center bg-zinc-900 text-white">
-    <div class="flex max-w-lg flex-col items-center justify-center gap-4 py-2">
-      <div class="mx-4 md:flex md:space-x-5">
-        <div class="flex flex-col justify-center">
+    <div class="flex max-w-xl flex-col items-center justify-center gap-4 py-2">
+      <div class="text-sm text-neutral-300">
+        <div class="my-2">
           <RyuappLogo />
         </div>
-        <div class="text-sm text-neutral-300">
-          <h1 class="text-xl text-white">About</h1>
-          <p>I'm <span class="text-brand">Ryu</span>, a frontend developer.</p>
-          <p>
-            I like developing and contributing to open source projects.
-            Recently, I have translated parts of <span class="text-[#fd3f26]"
-              >Astro</span
-            > doc and added some features to <span class="text-[#E36002]"
-              >Hono</span
-            >. There are small contributions, but I belive that they can lead to
-            a better future for the web.
-          </p>
-          <p>
-            My most used language is <span class="text-[#358EF1]"
-              >TypeScript</span
-            > and my favorite runtime is Deno. Besides, I use <span
-              class="text-[#f7a41d]">Zig</span
-            > for <span class="text-[#6485ff]">Wasm</span> and CLI.
-          </p>
-        </div>
+        <p>
+          I'm <span class="text-brand" transition:name="ryu">Ryu</span>, a <span
+            transition:name="frontend-developer">frontend developer</span
+          >.
+        </p>
+        <br />
+        <p>I like developing and contributing to open-source projects.</p>
+        <p>
+          Recently, I often contribute to Deno and <span class="text-[#E36002]"
+            >Hono</span
+          > communities.
+        </p>
+        <br />
+        <p>There are small contributions.</p><p>
+          However, I belive that they can lead to a better future for the web.
+        </p>
+        <br />
+        <p>
+          My most used language is <span class="text-[#358EF1]">TypeScript</span
+          > and my favorite runtime is Deno.
+        </p>
+        <p>Because they can be easily utilized in many situations,</p>
+        <p>they increase productivity for my activities.</p>
       </div>
       <Link href="/" variant="dark">Home</Link>
       <Footer isDark={true} />
