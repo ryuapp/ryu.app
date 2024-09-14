@@ -11,9 +11,9 @@
     slug: string;
   }>;
 
-  let emblaApi: { scrollPrev: () => void; scrollNext: () => void };
+  let emblaApi: EmblaCarouselType;
   const options: EmblaOptionsType = { loop: false, duration: 10 };
-  const onInit = (event: { detail: EmblaCarouselType }) => {
+  const onInit = (event: CustomEvent<EmblaCarouselType>) => {
     emblaApi = event.detail;
   };
   const onKeydown = (event: KeyboardEvent) => {
@@ -41,4 +41,4 @@
   </div>
 </div>
 
-<svelte:window on:keydown={onKeydown} />
+<svelte:window on:keydown|preventDefault={onKeydown} />
