@@ -41,4 +41,4 @@
   </div>
 </div>
 
-<svelte:window on:keydown|preventDefault={onKeydown} />
+<svelte:window on:keydown={onKeydown} />
