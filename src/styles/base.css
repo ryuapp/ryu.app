@@ -11,6 +11,9 @@
 ::-webkit-scrollbar-thumb {
   @apply rounded bg-zinc-400;
 }
+a:focus-visible {
+  @apply outline outline-2 outline-blue-500;
+}
 
 .scale-custom {
   @apply transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] active:scale-95;
@@ -62,7 +65,7 @@
 }
 
 #markup a {
-  @apply text-[#248216] underline;
+  @apply text-blue-600 underline;
 }
 
 #markup strong a {
