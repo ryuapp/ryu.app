@@ -14,7 +14,7 @@ for (let i = 0; i < 7 && i < data.length; i++) {
   const message = data[i].commit.message.slice(sliceNum).replace(/\s+/, "");
   const tmpDate = new Date(data[i].commit.committer.date);
   const currentDate = new Date();
-  const date = tmpDate.toLocaleDateString(undefined, {
+  const time = tmpDate.toLocaleDateString("en", {
     year:
       tmpDate.getFullYear() === currentDate.getFullYear()
         ? undefined
@@ -26,7 +26,8 @@ for (let i = 0; i < 7 && i < data.length; i++) {
   const commit = {
     emoji,
     message,
-    date,
+    time,
+    datetime: data[i].commit.committer.date,
   };
   commits.push(commit);
 }
@@ -50,15 +51,20 @@ const description = "Commits of ryu.app on GitHub.";
         class="relative my-4 flex flex-col gap-8 pb-8 pl-8 before:absolute before:left-8 before:top-0 before:h-full before:-translate-x-1/2 before:border before:border-dashed before:border-zinc-700 after:absolute after:bottom-6 after:left-8 after:top-6 after:-translate-x-1/2 after:border after:border-zinc-700"
       >
         {
-          commits.map((item, i) => {
+          commits.map((commit) => {
             return (
               <li class="relative pl-8">
                 <span class="absolute left-0 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-zinc-900 text-lg">
-                  {item.emoji}
+                  {commit.emoji}
                 </span>
                 <div class="flex flex-1 flex-col gap-0">
-                  <h2 class="text-sm"> {item.message} </h2>
-                  <p class="text-xs text-neutral-400">{item.date}</p>
+                  <h2 class="text-sm"> {commit.message} </h2>
+                  <time
+                    class="text-xs text-neutral-400"
+                    title={commit.datetime}
+                  >
+                    {commit.time}
+                  </time>
                 </div>
               </li>
             );
