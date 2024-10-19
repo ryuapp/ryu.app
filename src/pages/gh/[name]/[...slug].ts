@@ -3,15 +3,12 @@ import type { APIRoute } from "astro";
 export const prerender = false;
 
 export const GET: APIRoute = ({ params, redirect }) => {
-  const name = params.name as string;
-  const repo = name.split("@")[0];
-  const branch = name.split("@")[1] ?? "main";
-  const slug = (params.slug as string) ?? null;
+  const [repo, branch] = params?.name!.split("@", 2);
+  const slug = params.slug;
 
   if (!slug) return redirect("/");
+  const path = `${repo}/${branch ?? "main"}/${slug}`;
+  const url = `https://raw.githubusercontent.com/ryuapp/${path}`;
 
-  return redirect(
-    `https://raw.githubusercontent.com/ryuapp/${repo}/${branch}/${slug}`,
-    301,
-  );
+  return redirect(url);
 };
