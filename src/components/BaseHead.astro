@@ -53,4 +53,16 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl;
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#39b54a" />
 <meta name="msapplication-TileColor" content="#39b54a" />
 <meta name="theme-color" content="#39b54a" />
+<script>
+  document.addEventListener("visibilitychange", function () {
+    const favicon = document.querySelector(
+      'link[rel="icon"]',
+    ) as HTMLLinkElement;
+    if (document.visibilityState === "hidden") {
+      favicon!.href = "/favicon-32x32_grayscale.png";
+    } else {
+      favicon!.href = "/favicon-32x32.png";
+    }
+  });
+</script>
 <ViewTransitions />
