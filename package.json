@@ -11,13 +11,13 @@
     "format": "prettier --write --cache --cache-strategy metadata ."
   },
   "dependencies": {
-    "@astrojs/cloudflare": "11.1.0",
+    "@astrojs/cloudflare": "11.2.0",
     "@astrojs/mdx": "^3.1.9",
-    "@astrojs/svelte": "^5.7.2",
+    "@astrojs/svelte": "^5.7.3",
     "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.6",
-    "embla-carousel-svelte": "^8.3.0",
-    "svelte": "^4.2.19"
+    "astro": "^4.16.10",
+    "embla-carousel-svelte": "^8.3.1",
+    "svelte": "^5.1.13"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
