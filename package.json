@@ -11,19 +11,19 @@
     "format": "prettier --write --cache --cache-strategy metadata ."
   },
   "dependencies": {
-    "@astrojs/cloudflare": "11.2.0",
-    "@astrojs/mdx": "^3.1.9",
-    "@astrojs/svelte": "^5.7.3",
-    "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.10",
-    "embla-carousel-svelte": "^8.3.1",
-    "svelte": "4.2.19"
+    "@astrojs/cloudflare": "12.1.0",
+    "@astrojs/mdx": "^4.0.3",
+    "@astrojs/svelte": "^7.0.2",
+    "@astrojs/tailwind": "^5.1.4",
+    "astro": "^5.1.1",
+    "embla-carousel-svelte": "^8.5.1",
+    "svelte": "5.16.0"
   },
   "devDependencies": {
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-svelte": "^3.2.7",
-    "prettier-plugin-tailwindcss": "^0.6.8",
-    "tailwindcss": "^3.4.14"
+    "prettier-plugin-svelte": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "tailwindcss": "^3.4.17"
   }
 }

@@ -1,6 +1,9 @@
 <script lang="ts">
   import emblaCarouselSvelte from "embla-carousel-svelte";
-  import { type EmblaCarouselType, type EmblaOptionsType } from "embla-carousel";
+  import {
+    type EmblaCarouselType,
+    type EmblaOptionsType,
+  } from "embla-carousel";
 
   export let projects: Array<{
     name: string;

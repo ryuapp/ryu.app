@@ -7,7 +7,7 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   site: "https://ryu.app",
-  output: "hybrid",
+  output: "server",
   adapter: cloudflare(),
   integrations: [tailwind(), svelte(), mdx()],
   build: {
