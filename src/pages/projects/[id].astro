@@ -20,3 +20,12 @@ const { Content } = await render(entry);
 >
   <Content />
 </MarkdownLayout>
+
+<script is:inline type="module">
+  if (typeof window !== "undefined") {
+    sessionStorage.setItem(
+      "lastVisitedProject",
+      window.location.pathname.split("/").pop(),
+    );
+  }
+</script>

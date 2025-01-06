@@ -15,6 +15,14 @@
   const options: EmblaOptionsType = { loop: false, duration: 10 };
   const onInit = (event: CustomEvent<EmblaCarouselType>) => {
     emblaApi = event.detail;
+    const savedSlug = sessionStorage.getItem("lastVisitedProject");
+    const savedIndex = projects.findIndex(
+      (project) => project.slug === savedSlug,
+    );
+    if (savedIndex !== null) {
+      emblaApi.scrollTo(Number(savedIndex), false);
+    }
+    sessionStorage.removeItem("lastVisitedProject");
   };
   const onKeydown = (event: KeyboardEvent) => {
     if (event.key === "ArrowLeft") emblaApi.scrollPrev();
