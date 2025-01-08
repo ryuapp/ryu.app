@@ -13,11 +13,11 @@
   "dependencies": {
     "@astrojs/cloudflare": "12.1.0",
     "@astrojs/mdx": "4.0.3",
-    "@astrojs/svelte": "7.0.2",
+    "@astrojs/svelte": "7.0.3",
     "@astrojs/tailwind": "5.1.4",
-    "astro": "5.1.1",
+    "astro": "5.1.2",
     "embla-carousel-svelte": "8.5.1",
-    "svelte": "5.16.0"
+    "svelte": "5.16.2"
   },
   "devDependencies": {
     "prettier": "3.4.2",
