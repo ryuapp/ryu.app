@@ -1,7 +1,7 @@
 ---
 import "../styles/base.css";
 import { siteConfig } from "../../config/site.ts";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title?: string;
@@ -65,4 +65,4 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl;
     }
   });
 </script>
-<ViewTransitions />
+<ClientRouter />
