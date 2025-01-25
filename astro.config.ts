@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
 import svelte from "@astrojs/svelte";
-import tailwind from "@astrojs/tailwind";
+import tailwind from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
@@ -9,7 +9,7 @@ export default defineConfig({
   site: "https://ryu.app",
   output: "static",
   adapter: cloudflare(),
-  integrations: [tailwind(), svelte(), mdx()],
+  integrations: [svelte(), mdx()],
   build: {
     format: "file",
   },
@@ -18,5 +18,8 @@ export default defineConfig({
   },
   prefetch: {
     defaultStrategy: "viewport",
+  },
+  vite: {
+    plugins: [tailwind()],
   },
 });

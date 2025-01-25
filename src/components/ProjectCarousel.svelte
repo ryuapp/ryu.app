@@ -39,7 +39,7 @@
     {#each projects as project}
       <a
         href={"/projects/" + project.slug}
-        class="scale-custom min-w-0 flex-[0_0_100%] rounded border p-3 hover:bg-gray-100 active:bg-gray-200"
+        class="scale-custom min-w-0 flex-[0_0_100%] rounded-sm border border-gray-200 p-3 hover:bg-gray-100 active:bg-gray-200"
       >
         <h2 class="text-lg">{project.name}</h2>
         <hr class="mb-2 border-gray-300" />

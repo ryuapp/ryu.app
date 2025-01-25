@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #39b54a;
+  --color-github: #181717;
+
+  --font-sans: Poppins;
+}
 
 ::-webkit-scrollbar {
   @apply h-2 w-2;
@@ -9,7 +14,7 @@
   @apply bg-transparent;
 }
 ::-webkit-scrollbar-thumb {
-  @apply rounded bg-zinc-400;
+  @apply rounded-sm bg-zinc-400;
 }
 a:focus-visible {
   @apply outline outline-2 outline-blue-500;
@@ -36,17 +41,12 @@ a:focus-visible {
   src: url(/font/poppins-bold.woff2);
 }
 
-.py-05 {
-  /* Additional vertical padding used by kbd tag. */
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
-}
 #markup {
-  @apply break-words text-xl leading-normal;
+  @apply text-xl leading-normal break-words;
 }
 
 #markup > * + * {
-  @apply mb-4 mt-0;
+  @apply mt-0 mb-4;
 }
 
 #markup li + li {
@@ -73,39 +73,39 @@ a:focus-visible {
 }
 
 #markup h1 {
-  @apply mb-2 mt-3 text-2xl font-semibold leading-tight;
+  @apply mt-3 mb-2 text-2xl leading-tight font-semibold;
 }
 
 #markup h2 {
-  @apply mb-2 mt-5 text-xl font-semibold leading-tight;
+  @apply mt-5 mb-2 text-xl leading-tight font-semibold;
 }
 
 #markup h3 {
-  @apply mb-2 mt-3 text-lg font-semibold leading-snug;
+  @apply mt-3 mb-2 text-lg leading-snug font-semibold;
 }
 
 #markup h4 {
-  @apply mb-2 mt-3 text-base font-semibold leading-none;
+  @apply mt-3 mb-2 text-base leading-none font-semibold;
 }
 
 #markup h5 {
-  @apply mb-2 mt-3 text-sm font-semibold leading-tight;
+  @apply mt-3 mb-2 text-sm leading-tight font-semibold;
 }
 
 #markup h6 {
-  @apply mb-2 mt-3 text-sm font-semibold leading-tight text-gray-600;
+  @apply mt-3 mb-2 text-sm leading-tight font-semibold text-gray-600;
 }
 
 #markup blockquote {
-  @apply border-l-4 border-gray-300 pl-4 pr-4 text-base text-gray-600;
+  @apply border-l-4 border-gray-300 pr-4 pl-4 text-base text-gray-600;
 }
 
 #markup code {
-  @apply py-05 inline rounded bg-gray-200 px-1 text-sm;
+  @apply inline rounded-sm bg-gray-200 px-1 py-1 text-sm;
 }
 
 #markup pre {
-  @apply rounded bg-gray-100 p-4;
+  @apply rounded-sm bg-gray-100 p-4;
 }
 
 #markup pre code {
@@ -121,7 +121,7 @@ a:focus-visible {
 }
 
 #markup kbd {
-  @apply py-05 inline-block rounded border px-1 align-middle font-mono text-xs font-normal shadow;
+  @apply inline-block rounded-sm border px-1 py-1 align-middle font-mono text-xs font-normal shadow-sm;
 }
 
 #markup table {
@@ -138,5 +138,5 @@ a:focus-visible {
 
 /* Override pygments style background color. */
 #markup .highlight pre {
-  @apply bg-gray-100 !important;
+  @apply bg-gray-100!;
 }

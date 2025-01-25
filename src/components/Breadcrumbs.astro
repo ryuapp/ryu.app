@@ -12,7 +12,7 @@ const { title, items } = Astro.props;
 
 <nav class="relative -ml-4 flex flex-nowrap overflow-auto px-2 py-1 text-sm">
   <a
-    class="scale-custom flex-none rounded p-2 hover:bg-gray-100 active:bg-zinc-200"
+    class="scale-custom flex-none rounded-sm p-2 hover:bg-gray-100 active:bg-zinc-200"
     href="/">Home</a
   >
   <p class="mx-1 my-2 flex-none select-none">></p>
@@ -20,7 +20,7 @@ const { title, items } = Astro.props;
     items?.map((item) => (
       <>
         <a
-          class="scale-custom flex-none rounded p-2 hover:bg-gray-100 active:bg-zinc-200"
+          class="scale-custom flex-none rounded-sm p-2 hover:bg-gray-100 active:bg-zinc-200"
           href={item.href}
         >
           {item.name}
