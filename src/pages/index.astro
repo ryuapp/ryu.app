@@ -9,11 +9,15 @@ const description = "Ryu is a frontend developer.";
 ---
 
 <Layout description={description}>
-  <div class="flex min-h-svh justify-center bg-zinc-900 text-white">
+  <div
+    class="flex min-h-svh justify-center overflow-hidden bg-zinc-900 text-white"
+  >
     <div class="flex max-w-lg flex-col justify-center gap-4 py-2">
       <div>
         <div class="flex justify-center">
-          <RyuappLogo />
+          <div class="draggable">
+            <RyuappLogo />
+          </div>
         </div>
         <h1 class="text-lg font-bold" transition:name="ryu">Ryu</h1>
         <p class="text-neutral-400" transition:name="frontend-developer">
@@ -34,3 +38,10 @@ const description = "Ryu is a frontend developer.";
     </div>
   </div>
 </Layout>
+
+<script>
+  import { createDraggable } from "animejs";
+  document.addEventListener("astro:page-load", () => {
+    createDraggable(".draggable");
+  });
+</script>
