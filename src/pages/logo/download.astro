@@ -1,0 +1,237 @@
+---
+// TODO: Convert to Svelte or some other component framework
+import Layout from "../../layouts/Layout.astro";
+
+const svgData = await fetch(import.meta.env.LOGO_URL)
+  .then((response) => response.text())
+  .catch((error) => {
+    console.error("Error fetching SVG:", error);
+    return "";
+  });
+---
+
+<Layout
+  title="Ryuapp's Logo Download"
+  description="Download Ryuapp's logo in PNG or JPEG format"
+>
+  <main class="container mx-auto flex min-h-svh justify-center overflow-hidden">
+    <div class="m-auto grid max-w-2xl grid-cols-1 gap-8 p-4">
+      <div
+        class="flex w-[564px] max-w-full flex-col gap-2 rounded-lg border border-gray-200 bg-white p-6"
+      >
+        <h1 class="text-xl font-semibold">Ryuapp's Logo Download</h1>
+        <div>
+          <div
+            id="svgPreviewContainer"
+            set:html={svgData}
+            class="flex min-h-[200px] items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-100"
+          />
+          <p class="text-right text-sm text-gray-500">
+            © 2025 <a href="/" class="text-blue-600 underline">Ryu</a>
+          </p>
+          <div id="previewContainer" class="hidden"></div>
+        </div>
+        <div class="mb-6 flex gap-4">
+          <div>
+            <label for="width" class="mb-2 block text-sm font-medium">
+              Width
+            </label>
+            <div class="flex items-baseline gap-2">
+              <input
+                type="number"
+                required
+                id="width"
+                min="1"
+                value="512"
+                class="w-20 rounded border border-gray-300 p-2"
+              />
+              <span class="text-gray-500">px</span>
+            </div>
+          </div>
+          <div>
+            <label for="height" class="mb-2 block text-sm font-medium">
+              Height
+            </label>
+            <div class="flex items-baseline gap-2">
+              <input
+                type="number"
+                required
+                id="height"
+                min="1"
+                value="512"
+                class="w-20 rounded border border-gray-300 p-2"
+              />
+              <span class="text-gray-500">px</span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-medium">Format</label>
+          <div class="flex space-x-4">
+            <label class="inline-flex items-center">
+              <input
+                type="radio"
+                name="format"
+                value="png"
+                checked
+                class="form-radio"
+                id="formatPng"
+              />
+              <span class="ml-2">PNG</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input
+                type="radio"
+                name="format"
+                value="jpg"
+                class="form-radio"
+                id="formatJpg"
+              />
+              <span class="ml-2">JPEG</span>
+            </label>
+          </div>
+        </div>
+        <a
+          id="downloadLink"
+          class="block w-full rounded bg-blue-600 px-4 py-2 text-center font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+          download="ryuapp.png"
+        >
+          Download Image
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const svgPreviewContainer = document.getElementById(
+      "svgPreviewContainer",
+    ) as HTMLDivElement;
+    const widthInput = document.getElementById("width") as HTMLInputElement;
+    const heightInput = document.getElementById("height") as HTMLInputElement;
+    const previewContainer = document.getElementById(
+      "previewContainer",
+    ) as HTMLDivElement;
+    const downloadLink = document.getElementById(
+      "downloadLink",
+    ) as HTMLAnchorElement;
+    const formatPng = document.getElementById("formatPng") as HTMLInputElement;
+    const formatJpg = document.getElementById("formatJpg") as HTMLInputElement;
+
+    // Generate PNG or JPEG image on page load
+    generateImage();
+
+    // Convert SVG to Image when width, height, or format changes
+    widthInput.addEventListener("input", debounce(generateImage, 300));
+    heightInput.addEventListener("input", debounce(generateImage, 300));
+    formatPng.addEventListener("change", generateImage);
+    formatJpg.addEventListener("change", generateImage);
+
+    // Debounce function to limit how often generateImage is called
+    function debounce(
+      func: (...args: any[]) => void,
+      wait: number,
+    ): (...args: any[]) => void {
+      let timeout: ReturnType<typeof setTimeout> | undefined;
+      return function (this: unknown, ...args: any[]) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+      };
+    }
+
+    // Generate image from SVG
+    function generateImage() {
+      const svgCode = svgPreviewContainer.innerHTML;
+
+      if (!svgCode) {
+        console.log("SVG not yet loaded. Please wait.");
+        return;
+      }
+
+      const width = parseInt(widthInput.value, 10) || 512;
+      const height = parseInt(heightInput.value, 10) || 512;
+      const format = formatPng.checked ? "png" : "jpg";
+
+      // Create a temporary SVG element
+      const tempSvg = new DOMParser().parseFromString(
+        svgCode,
+        "image/svg+xml",
+      ).documentElement;
+
+      // Set width and height attributes
+      tempSvg.setAttribute("width", width.toString());
+      tempSvg.setAttribute("height", height.toString());
+
+      // Create a Blob from the SVG string
+      const svgBlob = new Blob(
+        [new XMLSerializer().serializeToString(tempSvg)],
+        { type: "image/svg+xml" },
+      );
+      const tempSvgUrl = URL.createObjectURL(svgBlob);
+
+      // Create an Image element to load the SVG
+      const img = new Image();
+      img.onload = () => {
+        // Create a canvas element
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+
+        // Draw the SVG onto the canvas
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          // Fill with white background first (especially important for JPEG which doesn't support transparency)
+          ctx.fillStyle = "white";
+          ctx.fillRect(0, 0, width, height);
+
+          // Fill with green background
+          ctx.fillStyle = "#39b54a";
+          ctx.fillRect(0, 0, width, height);
+
+          // Draw the SVG on top of the background
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Convert canvas to Image data URL
+          try {
+            // For JPEG format, add quality parameter
+            const imageDataUrl =
+              format === "png"
+                ? canvas.toDataURL("image/png")
+                : canvas.toDataURL("image/jpeg");
+
+            // Show preview
+            previewContainer.innerHTML = "";
+            const preview = document.createElement("img");
+            preview.src = imageDataUrl;
+            preview.alt = `Converted ${format.toUpperCase()} Image`;
+            preview.style.maxWidth = "100%";
+            previewContainer.appendChild(preview);
+
+            // Enable download
+            downloadLink.href = imageDataUrl;
+            downloadLink.download = `ryuapp.${format}`;
+            downloadLink.removeAttribute("disabled");
+          } catch (error) {
+            console.error(
+              `Error converting to ${format.toUpperCase()}:`,
+              error,
+            );
+            previewContainer.innerHTML = `<p class="text-red-500">Error converting to ${format.toUpperCase()}.</p>`;
+          }
+        }
+        URL.revokeObjectURL(tempSvgUrl);
+      };
+
+      img.onerror = () => {
+        console.error("Error loading SVG");
+        previewContainer.innerHTML =
+          '<p class="text-red-500">Error loading SVG.</p>';
+        URL.revokeObjectURL(tempSvgUrl);
+      };
+
+      img.src = tempSvgUrl;
+    }
+  });
+</script>
