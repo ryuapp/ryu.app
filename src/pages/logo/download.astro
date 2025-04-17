@@ -20,16 +20,16 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
         class="flex w-[564px] max-w-full flex-col gap-2 rounded-lg border border-gray-200 bg-white p-6"
       >
         <h1 class="text-xl font-semibold">Ryuapp's Logo Download</h1>
-        <div>
+        <div class="w-[512px] max-w-[512px] overflow-hidden">
           <div
             id="svgPreviewContainer"
             set:html={svgData}
-            class="flex min-h-[200px] items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-100"
+            class="flex items-center justify-center rounded-lg bg-gray-100"
           />
+          <div id="previewContainer" class="hidden"></div>
           <p class="text-right text-sm text-gray-500">
             © 2025 <a href="/" class="text-blue-600 underline">Ryu</a>
           </p>
-          <div id="previewContainer" class="hidden"></div>
         </div>
         <div class="mb-6 flex gap-4">
           <div>
@@ -43,7 +43,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
                 id="width"
                 min="1"
                 value="512"
-                class="w-20 rounded border border-gray-300 p-2"
+                class="w-20 rounded border border-gray-300 p-2 invalid:border-pink-500 invalid:text-pink-600"
               />
               <span class="text-gray-500">px</span>
             </div>
@@ -59,7 +59,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
                 id="height"
                 min="1"
                 value="512"
-                class="w-20 rounded border border-gray-300 p-2"
+                class="w-20 rounded border border-gray-300 p-2 invalid:border-pink-500 invalid:text-pink-600"
               />
               <span class="text-gray-500">px</span>
             </div>
@@ -93,8 +93,9 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
         </div>
         <a
           id="downloadLink"
-          class="block w-full rounded bg-blue-600 px-4 py-2 text-center font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+          class="block w-full rounded bg-blue-600 px-4 py-2 text-center font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 aria-disabled:bg-gray-500"
           download="ryuapp.png"
+          aria-disabled="true"
         >
           Download Image
         </a>
@@ -104,7 +105,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
 </Layout>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const svgPreviewContainer = document.getElementById(
       "svgPreviewContainer",
     ) as HTMLDivElement;
@@ -208,11 +209,13 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
             preview.alt = `Converted ${format.toUpperCase()} Image`;
             preview.style.maxWidth = "100%";
             previewContainer.appendChild(preview);
+            previewContainer.classList.remove("hidden");
+            svgPreviewContainer.classList.add("hidden");
 
             // Enable download
             downloadLink.href = imageDataUrl;
             downloadLink.download = `ryuapp.${format}`;
-            downloadLink.removeAttribute("disabled");
+            downloadLink.removeAttribute("aria-disabled");
           } catch (error) {
             console.error(
               `Error converting to ${format.toUpperCase()}:`,
