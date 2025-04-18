@@ -15,12 +15,12 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
   description="Download Ryuapp's logo in PNG or JPEG format"
 >
   <main class="container mx-auto flex min-h-svh justify-center overflow-hidden">
-    <div class="m-auto grid max-w-2xl grid-cols-1 gap-8 p-4">
+    <div class="m-auto grid max-w-3xl grid-cols-1 gap-8 p-4">
       <div
-        class="flex w-[564px] max-w-full flex-col gap-2 rounded-lg border border-gray-200 bg-white p-6"
+        class="flex w-[562px] max-w-full flex-col gap-2 rounded-lg border border-gray-200 bg-white p-6"
       >
         <h1 class="text-xl font-semibold">Ryuapp's Logo Download</h1>
-        <div class="w-[512px] max-w-[512px] overflow-hidden">
+        <div>
           <div
             id="svgPreviewContainer"
             set:html={svgData}
@@ -31,7 +31,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
             © 2025 <a href="/" class="text-blue-600 underline">Ryu</a>
           </p>
         </div>
-        <div class="mb-6 flex gap-4">
+        <div class="mb-6 flex flex-wrap gap-4">
           <div>
             <label for="width" class="mb-2 block text-sm font-medium">
               Width
@@ -208,6 +208,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
             preview.src = imageDataUrl;
             preview.alt = `Converted ${format.toUpperCase()} Image`;
             preview.style.maxWidth = "100%";
+            preview.style.maxHeight = "512px";
             previewContainer.appendChild(preview);
             previewContainer.classList.remove("hidden");
             svgPreviewContainer.classList.add("hidden");
