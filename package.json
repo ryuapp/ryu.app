@@ -11,19 +11,19 @@
     "format": "prettier --write --cache --cache-strategy metadata ."
   },
   "dependencies": {
-    "@astrojs/mdx": "4.3.12",
-    "@astrojs/svelte": "7.2.2",
-    "@tailwindcss/vite": "4.1.17",
+    "@astrojs/mdx": "4.3.13",
+    "@astrojs/svelte": "7.2.4",
+    "@tailwindcss/vite": "4.1.18",
     "animejs": "4.2.2",
-    "astro": "5.16.4",
+    "astro": "5.16.6",
     "embla-carousel-svelte": "8.6.0",
-    "svelte": "5.45.6"
+    "svelte": "5.46.0"
   },
   "devDependencies": {
     "prettier": "3.7.4",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-svelte": "3.4.0",
+    "prettier-plugin-svelte": "3.4.1",
     "prettier-plugin-tailwindcss": "0.7.2",
-    "tailwindcss": "4.1.17"
+    "tailwindcss": "4.1.18"
   }
 }
