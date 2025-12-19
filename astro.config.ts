@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import cloudflare from "@astrojs/cloudflare";
 import svelte from "@astrojs/svelte";
 import tailwind from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
@@ -8,7 +7,6 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   site: "https://ryu.app",
   output: "static",
-  adapter: cloudflare(),
   integrations: [svelte(), mdx()],
   build: {
     format: "file",
