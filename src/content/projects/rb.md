@@ -1,6 +1,6 @@
 ---
 slug: rb
-title: "lslike"
+title: "rb"
 description: "A rm(1) clone with the recycle bin for Windows."
 ---
 
