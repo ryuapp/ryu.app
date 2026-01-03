@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/Footer.astro";
 import Link from "../../components/Link.astro";
-import ProjectCarousel from "../../components/ProjectCarousel.svelte";
+import Badge from "../../components/Badge.astro";
 
 const title = "Projects";
 const description =
@@ -12,34 +12,56 @@ const projects = [
     name: "rb",
     description: "A rm(1) clone with the recycle bin for Windows.",
     slug: "rb",
+    category: "CLI",
   },
   {
     name: "Hono Hacker News",
     description: "A Hacker News clone made with Hono.",
     slug: "hono-hacker-news",
+    category: "Web",
   },
   {
     name: "enogu",
     description: "A library for painting your terminal with colors.",
     slug: "enogu",
+    category: "Library",
   },
   {
     name: "Fluent Emoji Picker",
     description: "Web app to easily copy Fluent Emoji.",
     slug: "fluent-emoji",
+    category: "Web",
   },
 ];
 ---
 
 <Layout title={title} description={description}>
-  <div class="flex justify-center overflow-hidden">
-    <div
-      class="flex min-h-svh max-w-lg flex-col items-center justify-center gap-4 py-2"
-    >
-      <h1 class="text-center text-2xl">{title}</h1>
-      <nav class="flex h-32 max-w-[20rem] flex-col justify-center">
-        <ProjectCarousel projects={projects} client:load />
-      </nav>
+  <div class="flex min-h-svh justify-center overflow-hidden">
+    <div class="flex max-w-xl flex-col justify-center gap-4 py-2">
+      <h1 class="mb-3 text-center text-2xl">
+        {title}
+      </h1>
+
+      <div
+        class="mx-1 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2"
+      >
+        {
+          projects.map((project) => (
+            <a
+              href={`/projects/${project.slug}`}
+              class="scale-custom rounded-sm border border-gray-200 p-3 hover:bg-gray-100 active:bg-gray-200"
+            >
+              <div class="mb-1 flex items-center justify-between">
+                <h2 class="text-lg">{project.name}</h2>
+                <Badge>{project.category}</Badge>
+              </div>
+              <hr class="mb-2 border-gray-300" />
+              <p class="text-sm">{project.description}</p>
+            </a>
+          ))
+        }
+      </div>
+
       <div class="flex justify-center">
         <Link href="/">Home</Link>
       </div>

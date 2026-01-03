@@ -12,17 +12,13 @@
   },
   "dependencies": {
     "@astrojs/mdx": "4.3.13",
-    "@astrojs/svelte": "7.2.4",
     "@tailwindcss/vite": "4.1.18",
     "animejs": "4.2.2",
-    "astro": "5.16.6",
-    "embla-carousel-svelte": "8.6.0",
-    "svelte": "5.46.0"
+    "astro": "5.16.6"
   },
   "devDependencies": {
     "prettier": "3.7.4",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-svelte": "3.4.1",
     "prettier-plugin-tailwindcss": "0.7.2",
     "tailwindcss": "4.1.18"
   }
