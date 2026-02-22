@@ -12,6 +12,9 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const allProjects = await getCollection("projects");
+const otherProjects = allProjects.filter((p) => p.id !== entry.id);
 ---
 
 <MarkdownLayout
@@ -19,6 +22,25 @@ const { Content } = await render(entry);
   breadcrumbs={[{ name: "Projects", href: "/projects" }]}
 >
   <Content />
+  <div slot="other-projects" class="mt-8 border-t border-gray-200 pt-6">
+    <h2 class="mb-4 text-lg font-semibold">Other Projects</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {
+        otherProjects.map((project) => (
+          <a
+            href={`/projects/${project.id}`}
+            class="border border-gray-200 p-3 hover:underline"
+          >
+            <div class="mb-1 flex items-center justify-between">
+              <h3>{project.data.title}</h3>
+            </div>
+            <hr class="mb-2 border-gray-300" />
+            <p class="text-sm text-zinc-600">{project.data.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
 </MarkdownLayout>
 
 <script is:inline type="module">

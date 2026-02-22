@@ -4,45 +4,11 @@
   --color-brand: #39b54a;
   --color-github: #181717;
 
-  --font-sans: Poppins;
-}
-
-::-webkit-scrollbar {
-  @apply h-2 w-2;
-}
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-::-webkit-scrollbar-thumb {
-  @apply rounded-sm bg-zinc-400;
-}
-a:focus-visible {
-  @apply outline outline-2 outline-blue-500;
-}
-
-.scale-custom {
-  @apply transition duration-[350ms] ease-[cubic-bezier(0.4,0,0.1,1)] active:scale-95;
-  -webkit-user-drag: none;
-}
-
-/* font */
-@font-face {
-  font-weight: 400;
-  font-style: normal;
-  font-family: Poppins;
-  font-display: swap;
-  src: url(/font/poppins-regular.woff2);
-}
-@font-face {
-  font-weight: 700;
-  font-style: normal;
-  font-family: Poppins;
-  font-display: swap;
-  src: url(/font/poppins-bold.woff2);
+  --font-sans: "Courier New", Courier, "Hiragino Sans", monospace;
 }
 
 #markup {
-  @apply text-xl leading-normal break-words;
+  @apply text-xl leading-tight break-words;
 }
 
 #markup > * + * {
@@ -50,7 +16,7 @@ a:focus-visible {
 }
 
 #markup li + li {
-  @apply mt-1;
+  @apply mt-0.5;
 }
 
 #markup li > p + p {
@@ -58,7 +24,7 @@ a:focus-visible {
 }
 
 #markup p {
-  @apply text-base text-zinc-600;
+  @apply text-base leading-tight text-zinc-600;
 }
 #markup strong {
   @apply font-semibold;

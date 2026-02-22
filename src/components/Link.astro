@@ -4,20 +4,13 @@ interface Props {
   variant?: "default" | "dark" | "menu";
 }
 
-const cssDefault = "hover:bg-gray-100 active:bg-zinc-200";
-const cssDark = "hover:bg-zinc-800/50 active:bg-zinc-800";
-const cssMenu =
-  "text-center text-lg hover:bg-zinc-800/50 hover:text-brand! active:bg-zinc-800 active:text-green-500";
+const cssDefault = "hover:underline";
+const cssMenu = "text-center text-lg hover:underline hover:text-brand!";
 
 const { href, variant = "default" } = Astro.props;
-const customCss =
-  variant === "default" ? cssDefault : variant === "dark" ? cssDark : cssMenu;
+const customCss = variant === "default" ? cssDefault : cssMenu;
 ---
 
-<a
-  href={href}
-  class="scale-custom rounded-md bg-transparent px-4 py-2 text-sm"
-  class:list={customCss}
->
+<a href={href} class="bg-transparent px-4 py-2 text-sm" class:list={customCss}>
   <slot />
 </a>
