@@ -44,7 +44,16 @@ const description = "Ryu is a frontend developer.";
 
 <script>
   import { createDraggable } from "animejs";
+  import { WebHaptics } from "web-haptics";
+
+  const haptics = new WebHaptics();
+
   document.addEventListener("astro:page-load", () => {
     createDraggable(".draggable");
+
+    const draggable = document.querySelector(".draggable");
+    draggable?.addEventListener("pointerdown", () => {
+      haptics.trigger("nudge");
+    });
   });
 </script>
