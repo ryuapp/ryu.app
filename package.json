@@ -11,10 +11,10 @@
     "format": "prettier --write --cache --cache-strategy metadata ."
   },
   "dependencies": {
-    "@astrojs/mdx": "4.3.13",
+    "@astrojs/mdx": "5.0.0",
     "@tailwindcss/vite": "4.2.0",
     "animejs": "4.3.6",
-    "astro": "5.17.3",
+    "astro": "6.0.2",
     "web-haptics": "0.0.6"
   },
   "devDependencies": {
