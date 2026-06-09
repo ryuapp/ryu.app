@@ -2,32 +2,11 @@
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/Footer.astro";
 import Link from "../../components/Link.astro";
+import { projects } from "../../../config/projects.ts";
 
 const title = "Projects";
 const description =
   "Ryu's projects. Software, web application, libary, CLI, etc.";
-const projects = [
-  {
-    name: "rb",
-    description: "A rm(1) clone with the recycle bin for Windows.",
-    slug: "rb",
-  },
-  {
-    name: "Hono Hacker News",
-    description: "A Hacker News clone made with Hono.",
-    slug: "hono-hacker-news",
-  },
-  {
-    name: "enogu",
-    description: "A library for painting your terminal with colors.",
-    slug: "enogu",
-  },
-  {
-    name: "Fluent Emoji Picker",
-    description: "Web app to easily copy Fluent Emoji.",
-    slug: "fluent-emoji",
-  },
-];
 ---
 
 <Layout title={title} description={description}>
@@ -37,19 +16,11 @@ const projects = [
         {title}
       </h1>
 
-      <div
-        class="mx-1 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2"
-      >
+      <div class="mb-6 flex flex-col divide-y divide-gray-300">
         {
           projects.map((project) => (
-            <a
-              href={`/projects/${project.slug}`}
-              class="border border-gray-200 p-3 hover:underline"
-            >
-              <div class="mb-1 flex items-center justify-between">
-                <h2>{project.name}</h2>
-              </div>
-              <hr class="mb-2 border-gray-300" />
+            <a href={`${project.link}`} class="p-3 hover:underline">
+              <h2>{project.name}</h2>
               <p class="text-sm">{project.description}</p>
             </a>
           ))

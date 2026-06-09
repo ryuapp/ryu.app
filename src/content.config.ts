@@ -19,15 +19,6 @@ const site = defineCollection({
   schema: defaultSchema,
 });
 
-const projects = defineCollection({
-  loader: glob({
-    pattern: ["**/*.md", "**/*.mdx"],
-    base: "./src/content/projects",
-  }),
-  schema: defaultSchema,
-});
-
 export const collections = {
   site,
-  projects,
 };
