@@ -14,8 +14,7 @@
     "@astrojs/mdx": "6.0.3",
     "@tailwindcss/vite": "4.3.0",
     "animejs": "4.4.1",
-    "astro": "6.4.5",
-    "web-haptics": "0.0.6"
+    "astro": "6.4.5"
   },
   "devDependencies": {
     "prettier": "3.8.4",
