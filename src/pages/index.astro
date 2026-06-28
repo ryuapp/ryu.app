@@ -14,10 +14,17 @@ const description = "Ryu is a frontend developer.";
   >
     <div class="flex max-w-lg flex-col justify-center gap-4 py-2">
       <div>
-        <div class="flex justify-center">
-          <div class="draggable">
+        <div class="relative flex h-16 justify-center">
+          <div class="draggable cursor-grab touch-none select-none">
             <RyuappLogo />
           </div>
+          <span
+            data-pull-hint
+            class="pointer-events-none absolute top-1/2 left-[calc(50%+2.75rem)] -translate-y-1/2 text-sm whitespace-nowrap text-neutral-400 opacity-0 transition-opacity duration-500"
+            aria-hidden="true"
+          >
+            ← Drag it
+          </span>
         </div>
         <div class="flex items-baseline gap-1">
           <h1 class="text-lg font-bold" transition:name="ryu">Ryu</h1>
@@ -43,9 +50,58 @@ const description = "Ryu is a frontend developer.";
 </Layout>
 
 <script>
-  import { createDraggable } from "animejs";
+  import { createBouncyDraggable } from "../utils/bouncyDraggable";
+
+  let cleanup: (() => void) | undefined;
+  let hintCleanup: (() => void) | undefined;
 
   document.addEventListener("astro:page-load", () => {
-    createDraggable(".draggable");
+    cleanup?.();
+    hintCleanup?.();
+    cleanup = createBouncyDraggable(".draggable");
+
+    const draggable = document.querySelector<HTMLElement>(".draggable");
+    const hint = document.querySelector<HTMLElement>("[data-pull-hint]");
+
+    if (!draggable || !hint) {
+      hintCleanup = undefined;
+      return;
+    }
+
+    const showHint = (text: string) => {
+      hint.textContent = text;
+      hint.classList.remove("opacity-0");
+      hint.classList.add("opacity-100");
+    };
+
+    const hideHint = () => {
+      hint.classList.remove("opacity-100");
+      hint.classList.add("opacity-0");
+    };
+
+    const hintTimer = window.setTimeout(() => {
+      showHint("← Drag it");
+    }, 10000);
+
+    const handlePointerDown = () => {
+      window.clearTimeout(hintTimer);
+      showHint("Throw it!");
+    };
+
+    const handlePointerRelease = () => {
+      hideHint();
+    };
+
+    draggable.addEventListener("pointerdown", handlePointerDown);
+    draggable.addEventListener("pointerup", handlePointerRelease);
+    draggable.addEventListener("pointercancel", handlePointerRelease);
+
+    hintCleanup = () => {
+      window.clearTimeout(hintTimer);
+      hideHint();
+      draggable.removeEventListener("pointerdown", handlePointerDown);
+      draggable.removeEventListener("pointerup", handlePointerRelease);
+      draggable.removeEventListener("pointercancel", handlePointerRelease);
+    };
   });
 </script>
