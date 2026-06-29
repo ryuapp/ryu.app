@@ -1,7 +1,9 @@
 const MIN_THROW_SPEED = 0.04;
-const THROW_FRICTION_PER_FRAME = 0.97;
+const THROW_FRICTION_PER_FRAME = 0.995;
 const SAMPLE_WINDOW_MS = 100;
 const FRAME_MS = 1000 / 60;
+const DRAG_WALL_SPRING = 0.45;
+const DRAG_STEP_PX = 44;
 
 type AxisState = {
   position: number;
@@ -15,12 +17,32 @@ type MotionState = {
   vy: number;
 };
 
+type CollisionRect = {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+};
+
 type MotionInput = MotionState & {
   width: number;
   height: number;
   viewportWidth: number;
   viewportHeight: number;
   deltaMs: number;
+  walls?: CollisionRect[];
+};
+
+type DragPositionInput = {
+  previousX: number;
+  previousY: number;
+  targetX: number;
+  targetY: number;
+  width: number;
+  height: number;
+  viewportWidth: number;
+  viewportHeight: number;
+  walls?: CollisionRect[];
 };
 
 type PointerSample = {
@@ -75,7 +97,239 @@ function getFrameFriction(deltaMs: number): number {
   return THROW_FRICTION_PER_FRAME ** (deltaMs / FRAME_MS);
 }
 
-function stepMotion({
+function overlaps(
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  rect: CollisionRect,
+): boolean {
+  return (
+    x < rect.right &&
+    x + width > rect.left &&
+    y < rect.bottom &&
+    y + height > rect.top
+  );
+}
+
+function resolveWallCollision(
+  previous: MotionState,
+  next: MotionState,
+  width: number,
+  height: number,
+  wall: CollisionRect,
+): MotionState {
+  if (!overlaps(next.x, next.y, width, height, wall)) {
+    return next;
+  }
+
+  const previousRight = previous.x + width;
+  const previousBottom = previous.y + height;
+
+  if (previousRight <= wall.left && next.vx > 0) {
+    return { ...next, x: wall.left - width, vx: -Math.abs(next.vx) };
+  }
+
+  if (previous.x >= wall.right && next.vx < 0) {
+    return { ...next, x: wall.right, vx: Math.abs(next.vx) };
+  }
+
+  if (previousBottom <= wall.top && next.vy > 0) {
+    return { ...next, y: wall.top - height, vy: -Math.abs(next.vy) };
+  }
+
+  if (previous.y >= wall.bottom && next.vy < 0) {
+    return { ...next, y: wall.bottom, vy: Math.abs(next.vy) };
+  }
+
+  const pushLeft = Math.abs(next.x + width - wall.left);
+  const pushRight = Math.abs(wall.right - next.x);
+  const pushUp = Math.abs(next.y + height - wall.top);
+  const pushDown = Math.abs(wall.bottom - next.y);
+  const minPush = Math.min(pushLeft, pushRight, pushUp, pushDown);
+
+  if (minPush === pushLeft) {
+    return { ...next, x: wall.left - width, vx: -Math.abs(next.vx) };
+  }
+
+  if (minPush === pushRight) {
+    return { ...next, x: wall.right, vx: Math.abs(next.vx) };
+  }
+
+  if (minPush === pushUp) {
+    return { ...next, y: wall.top - height, vy: -Math.abs(next.vy) };
+  }
+
+  return { ...next, y: wall.bottom, vy: Math.abs(next.vy) };
+}
+
+function collidesWithWall(
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  walls: CollisionRect[],
+): boolean {
+  return walls.some((wall) => overlaps(x, y, width, height, wall));
+}
+
+function springToward(current: number, target: number): number {
+  return current + (target - current) * DRAG_WALL_SPRING;
+}
+
+function resolveDraggedX(
+  previousX: number,
+  targetX: number,
+  y: number,
+  width: number,
+  height: number,
+  walls: CollisionRect[],
+): number {
+  let nextX = targetX;
+
+  for (const wall of walls) {
+    if (!overlaps(nextX, y, width, height, wall)) {
+      continue;
+    }
+
+    if (targetX > previousX && previousX + width <= wall.left) {
+      const edge = wall.left - width;
+      const pull = Math.min(edge, springToward(previousX, edge));
+      nextX = Math.min(nextX, pull);
+    } else if (targetX < previousX && previousX >= wall.right) {
+      const edge = wall.right;
+      const pull = Math.max(edge, springToward(previousX, edge));
+      nextX = Math.max(nextX, pull);
+    } else {
+      nextX = springToward(previousX, targetX);
+    }
+  }
+
+  return nextX;
+}
+
+function resolveDraggedY(
+  x: number,
+  previousY: number,
+  targetY: number,
+  width: number,
+  height: number,
+  walls: CollisionRect[],
+): number {
+  let nextY = targetY;
+
+  for (const wall of walls) {
+    if (!overlaps(x, nextY, width, height, wall)) {
+      continue;
+    }
+
+    if (targetY > previousY && previousY + height <= wall.top) {
+      const edge = wall.top - height;
+      const pull = Math.min(edge, springToward(previousY, edge));
+      nextY = Math.min(nextY, pull);
+    } else if (targetY < previousY && previousY >= wall.bottom) {
+      const edge = wall.bottom;
+      const pull = Math.max(edge, springToward(previousY, edge));
+      nextY = Math.max(nextY, pull);
+    } else {
+      nextY = springToward(previousY, targetY);
+    }
+  }
+
+  return nextY;
+}
+
+function resolveDraggedStep(
+  previousX: number,
+  previousY: number,
+  targetX: number,
+  targetY: number,
+  width: number,
+  height: number,
+  walls: CollisionRect[],
+): { x: number; y: number } {
+  let nextX = targetX;
+  let nextY = targetY;
+
+  if (collidesWithWall(nextX, previousY, width, height, walls)) {
+    nextX = resolveDraggedX(
+      previousX,
+      targetX,
+      previousY,
+      width,
+      height,
+      walls,
+    );
+  }
+
+  if (collidesWithWall(nextX, nextY, width, height, walls)) {
+    nextY = resolveDraggedY(nextX, previousY, targetY, width, height, walls);
+  }
+
+  if (collidesWithWall(nextX, nextY, width, height, walls)) {
+    nextX = resolveDraggedX(previousX, targetX, nextY, width, height, walls);
+  }
+
+  return { x: nextX, y: nextY };
+}
+
+export function resolveDraggedPosition({
+  previousX,
+  previousY,
+  targetX,
+  targetY,
+  width,
+  height,
+  viewportWidth,
+  viewportHeight,
+  walls = [],
+}: DragPositionInput): { x: number; y: number } {
+  const clampedTargetX = clamp(targetX, 0, Math.max(0, viewportWidth - width));
+  const clampedTargetY = clamp(
+    targetY,
+    0,
+    Math.max(0, viewportHeight - height),
+  );
+  const clampedPreviousX = clamp(
+    previousX,
+    0,
+    Math.max(0, viewportWidth - width),
+  );
+  const clampedPreviousY = clamp(
+    previousY,
+    0,
+    Math.max(0, viewportHeight - height),
+  );
+
+  const deltaX = clampedTargetX - clampedPreviousX;
+  const deltaY = clampedTargetY - clampedPreviousY;
+  const distance = Math.hypot(deltaX, deltaY);
+
+  if (distance <= DRAG_STEP_PX) {
+    return resolveDraggedStep(
+      clampedPreviousX,
+      clampedPreviousY,
+      clampedTargetX,
+      clampedTargetY,
+      width,
+      height,
+      walls,
+    );
+  }
+
+  const stepScale = DRAG_STEP_PX / distance;
+  return resolveDraggedStep(
+    clampedPreviousX,
+    clampedPreviousY,
+    clampedPreviousX + deltaX * stepScale,
+    clampedPreviousY + deltaY * stepScale,
+    width,
+    height,
+    walls,
+  );
+}
+
+export function stepMotion({
   x,
   y,
   vx,
@@ -85,17 +339,25 @@ function stepMotion({
   viewportWidth,
   viewportHeight,
   deltaMs,
+  walls = [],
 }: MotionInput): MotionState {
   const horizontal = reflectAxis(x, vx, width, viewportWidth, deltaMs);
   const vertical = reflectAxis(y, vy, height, viewportHeight, deltaMs);
   const damping = getFrameFriction(deltaMs);
 
-  return {
+  const previous = { x, y, vx, vy };
+  let next = {
     x: horizontal.position,
     y: vertical.position,
     vx: horizontal.velocity * damping,
     vy: vertical.velocity * damping,
   };
+
+  for (const wall of walls) {
+    next = resolveWallCollision(previous, next, width, height, wall);
+  }
+
+  return next;
 }
 
 export function createBouncyDraggable(selector: string): () => void {
@@ -115,14 +377,29 @@ function attachBouncyDrag(element: HTMLElement): () => void {
   let offsetX = 0;
   let offsetY = 0;
   let animationFrame = 0;
+  let dragFrame = 0;
   let lastFrameTime = 0;
   let pointerId: number | null = null;
+  let dragTargetX = 0;
+  let dragTargetY = 0;
   let samples: PointerSample[] = [];
   let isFixed = false;
 
   const applyPosition = () => {
     element.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   };
+
+  const getWallRects = (): CollisionRect[] =>
+    [...document.querySelectorAll<HTMLElement>("[data-bouncy-wall]")]
+      .filter((wall) => wall !== element && !element.contains(wall))
+      .map((wall) => wall.getBoundingClientRect())
+      .filter((rect) => rect.width > 0 && rect.height > 0)
+      .map((rect) => ({
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+      }));
 
   const fixToViewport = () => {
     if (isFixed) {
@@ -149,6 +426,50 @@ function attachBouncyDrag(element: HTMLElement): () => void {
     }
   };
 
+  const stopDragAnimation = () => {
+    if (dragFrame !== 0) {
+      cancelAnimationFrame(dragFrame);
+      dragFrame = 0;
+    }
+  };
+
+  const animateDrag = () => {
+    const rect = element.getBoundingClientRect();
+    const next = resolveDraggedPosition({
+      previousX: x,
+      previousY: y,
+      targetX: dragTargetX,
+      targetY: dragTargetY,
+      width: rect.width,
+      height: rect.height,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+      walls: getWallRects(),
+    });
+
+    x = next.x;
+    y = next.y;
+    applyPosition();
+
+    if (
+      pointerId === null ||
+      (Math.abs(x - dragTargetX) < 0.5 && Math.abs(y - dragTargetY) < 0.5)
+    ) {
+      dragFrame = 0;
+      return;
+    }
+
+    dragFrame = requestAnimationFrame(animateDrag);
+  };
+
+  const startDragAnimation = () => {
+    if (dragFrame !== 0) {
+      return;
+    }
+
+    dragFrame = requestAnimationFrame(animateDrag);
+  };
+
   const animate = (time: number) => {
     if (lastFrameTime === 0) {
       lastFrameTime = time;
@@ -168,6 +489,7 @@ function attachBouncyDrag(element: HTMLElement): () => void {
       viewportWidth: window.innerWidth,
       viewportHeight: window.innerHeight,
       deltaMs,
+      walls: getWallRects(),
     });
 
     x = next.x;
@@ -223,12 +545,15 @@ function attachBouncyDrag(element: HTMLElement): () => void {
     }
 
     stopAnimation();
+    stopDragAnimation();
     fixToViewport();
     pointerId = event.pointerId;
     element.setPointerCapture(pointerId);
     element.style.cursor = "grabbing";
     offsetX = event.clientX - x;
     offsetY = event.clientY - y;
+    dragTargetX = x;
+    dragTargetY = y;
     samples = [];
     addSample(event.clientX, event.clientY, event.timeStamp);
   };
@@ -238,20 +563,11 @@ function attachBouncyDrag(element: HTMLElement): () => void {
       return;
     }
 
-    const rect = element.getBoundingClientRect();
-    x = clamp(
-      event.clientX - offsetX,
-      0,
-      Math.max(0, window.innerWidth - rect.width),
-    );
-    y = clamp(
-      event.clientY - offsetY,
-      0,
-      Math.max(0, window.innerHeight - rect.height),
-    );
+    dragTargetX = event.clientX - offsetX;
+    dragTargetY = event.clientY - offsetY;
     addSample(event.clientX, event.clientY, event.timeStamp);
     updateVelocity();
-    applyPosition();
+    startDragAnimation();
   };
 
   const releasePointer = (event: PointerEvent) => {
@@ -264,6 +580,7 @@ function attachBouncyDrag(element: HTMLElement): () => void {
     }
 
     pointerId = null;
+    stopDragAnimation();
     element.style.cursor = "grab";
     updateVelocity();
     startAnimation();
