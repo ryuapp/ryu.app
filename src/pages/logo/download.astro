@@ -12,92 +12,147 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
 
 <Layout
   title="Ryuapp's Logo Download"
-  description="Download Ryuapp's logo in PNG or JPEG format"
+  description="Download Ryuapp's logo in PNG, JPEG, or WebP format"
+  noindex={true}
 >
-  <main class="container mx-auto flex min-h-svh justify-center overflow-hidden">
-    <div class="m-auto grid max-w-3xl grid-cols-1 gap-8 p-4">
-      <div
-        class="flex w-[562px] max-w-full flex-col gap-2 rounded-lg border border-gray-200 bg-white p-6"
-      >
-        <h1 class="text-xl font-semibold">Ryuapp's Logo Download</h1>
+  <main
+    class="flex min-h-svh justify-center overflow-hidden bg-zinc-900 text-white"
+  >
+    <div class="flex w-full max-w-xl flex-col justify-center gap-4 px-4 py-2">
+      <div class="flex flex-col gap-4">
         <div>
-          <div
-            id="svgPreviewContainer"
-            set:html={svgData}
-            class="flex items-center justify-center rounded-lg bg-gray-100"
-          />
-          <div id="previewContainer" class="hidden"></div>
-          <p class="text-right text-sm text-gray-500">
-            © 2025 <a href="/" class="text-blue-600 underline">Ryu</a>
+          <h1 class="text-lg font-bold">Logo Download</h1>
+          <p class="text-sm text-neutral-400">
+            Download Ryuapp's logo as PNG, JPEG, or WebP.
           </p>
         </div>
-        <div class="mb-6 flex flex-wrap gap-4">
+
+        <div class="grid gap-2">
+          <div
+            id="previewShell"
+            class="relative aspect-square w-[min(100%,512px)] min-w-[min(100%,512px)] overflow-visible rounded bg-zinc-900"
+          >
+            <div
+              id="svgPreviewContainer"
+              set:html={svgData}
+              class="logo-preview absolute inset-0 flex items-center justify-center"
+            />
+            <div
+              id="previewContainer"
+              class="logo-preview absolute inset-0 hidden items-center justify-center"
+            >
+            </div>
+            <div
+              id="sizeGuide"
+              class="size-guide pointer-events-none absolute inset-0 z-[2] opacity-0 transition-opacity duration-[160ms]"
+              aria-hidden="true"
+            >
+              <div
+                class="size-guide-line-x border-brand text-brand before:bg-brand after:bg-brand absolute top-[calc(50%+var(--logo-preview-size,512px)/2+10px)] left-1/2 w-[var(--logo-preview-size,512px)] -translate-x-1/2 border-t text-xs leading-none transition-[top,width] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-[-4px] before:left-0 before:h-[7px] before:w-px before:content-[''] after:absolute after:top-[-4px] after:right-0 after:h-[7px] after:w-px after:content-['']"
+              >
+                <span
+                  data-size-guide-x
+                  class="absolute top-[6px] left-1/2 -translate-x-1/2"
+                  >512px</span
+                >
+              </div>
+              <div
+                class="size-guide-line-y border-brand text-brand before:bg-brand after:bg-brand absolute top-1/2 left-[calc(50%+var(--logo-preview-size,512px)/2+10px)] h-[var(--logo-preview-size,512px)] -translate-y-1/2 border-l text-xs leading-none transition-[left,height] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-0 before:left-[-4px] before:h-px before:w-[7px] before:content-[''] after:absolute after:bottom-0 after:left-[-4px] after:h-px after:w-[7px] after:content-['']"
+              >
+                <span
+                  data-size-guide-y
+                  class="absolute top-1/2 left-[6px] -translate-y-1/2 whitespace-nowrap"
+                  >512px</span
+                >
+              </div>
+            </div>
+          </div>
+          <p class="text-right text-sm text-neutral-400">
+            © 2026 <a href="/" class="text-brand underline">Ryu</a>
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-end gap-6">
           <div>
-            <label for="width" class="mb-2 block text-sm font-medium">
-              Width
+            <label for="size" class="mb-2 block text-sm font-medium">
+              Size
             </label>
             <div class="flex items-baseline gap-2">
               <input
                 type="number"
                 required
-                id="width"
-                min="1"
+                id="size"
+                min="32"
+                max="5120"
                 value="512"
-                class="w-20 rounded border border-gray-300 p-2 invalid:border-pink-500 invalid:text-pink-600"
+                class="focus:border-brand focus:ring-brand/40 w-24 rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-white outline-none invalid:border-pink-500 invalid:text-pink-400 focus:ring-2"
               />
-              <span class="text-gray-500">px</span>
+              <span class="text-sm text-neutral-400">px</span>
             </div>
           </div>
+
           <div>
-            <label for="height" class="mb-2 block text-sm font-medium">
-              Height
-            </label>
-            <div class="flex items-baseline gap-2">
-              <input
-                type="number"
-                required
-                id="height"
-                min="1"
-                value="512"
-                class="w-20 rounded border border-gray-300 p-2 invalid:border-pink-500 invalid:text-pink-600"
-              />
-              <span class="text-gray-500">px</span>
+            <label class="mb-2 block text-sm font-medium">Format</label>
+            <div
+              class="flex min-h-10 items-center gap-4 text-sm text-neutral-300"
+            >
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  name="format"
+                  value="png"
+                  checked
+                  class="accent-brand"
+                  id="formatPng"
+                />
+                <span class="ml-2">PNG</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  name="format"
+                  value="jpg"
+                  class="accent-brand"
+                  id="formatJpg"
+                />
+                <span class="ml-2">JPEG</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  name="format"
+                  value="webp"
+                  class="accent-brand disabled:cursor-not-allowed disabled:opacity-40"
+                  id="formatWebp"
+                />
+                <span class="ml-2">WebP</span>
+              </label>
             </div>
           </div>
         </div>
-        <div class="mb-6">
-          <label class="mb-2 block text-sm font-medium">Format</label>
-          <div class="flex space-x-4">
-            <label class="inline-flex items-center">
-              <input
-                type="radio"
-                name="format"
-                value="png"
-                checked
-                class="form-radio"
-                id="formatPng"
-              />
-              <span class="ml-2">PNG</span>
-            </label>
-            <label class="inline-flex items-center">
-              <input
-                type="radio"
-                name="format"
-                value="jpg"
-                class="form-radio"
-                id="formatJpg"
-              />
-              <span class="ml-2">JPEG</span>
-            </label>
-          </div>
-        </div>
+
         <a
           id="downloadLink"
-          class="block w-full rounded bg-blue-600 px-4 py-2 text-center font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 aria-disabled:bg-gray-500"
+          class="download-button border-brand/60 text-brand hover:border-brand relative isolate inline-flex w-fit items-center justify-center overflow-hidden rounded border px-4 py-2 text-sm font-medium transition duration-300 hover:-translate-y-0.5 hover:text-zinc-950 active:translate-y-0 aria-disabled:pointer-events-none aria-disabled:border-zinc-700 aria-disabled:text-zinc-500"
           download="ryuapp.png"
           aria-disabled="true"
         >
-          Download Image
+          <span class="download-wave" aria-hidden="true">
+            <svg
+              class="download-wave-shape"
+              viewBox="0 0 120 18"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0 9 C10 1 20 1 30 9 S50 17 60 9 S80 1 90 9 S110 17 120 9 V18 H0 Z"
+              ></path>
+              <path
+                d="M120 9 C130 1 140 1 150 9 S170 17 180 9 S200 1 210 9 S230 17 240 9 V18 H120 Z"
+              ></path>
+            </svg>
+            <span class="download-wave-fill"></span>
+          </span>
+          <span class="relative z-10">Download</span>
         </a>
       </div>
     </div>
@@ -109,25 +164,40 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
     const svgPreviewContainer = document.getElementById(
       "svgPreviewContainer",
     ) as HTMLDivElement;
-    const widthInput = document.getElementById("width") as HTMLInputElement;
-    const heightInput = document.getElementById("height") as HTMLInputElement;
+    const sizeInput = document.getElementById("size") as HTMLInputElement;
     const previewContainer = document.getElementById(
       "previewContainer",
     ) as HTMLDivElement;
+    const previewShell = document.getElementById(
+      "previewShell",
+    ) as HTMLDivElement;
+    const sizeGuide = document.getElementById("sizeGuide") as HTMLDivElement;
+    const sizeGuideX = document.querySelector(
+      "[data-size-guide-x]",
+    ) as HTMLSpanElement;
+    const sizeGuideY = document.querySelector(
+      "[data-size-guide-y]",
+    ) as HTMLSpanElement;
     const downloadLink = document.getElementById(
       "downloadLink",
     ) as HTMLAnchorElement;
     const formatPng = document.getElementById("formatPng") as HTMLInputElement;
     const formatJpg = document.getElementById("formatJpg") as HTMLInputElement;
+    const formatWebp = document.getElementById(
+      "formatWebp",
+    ) as HTMLInputElement;
 
     // Generate PNG or JPEG image on page load
+    updatePreviewSize(undefined, false);
     generateImage();
 
-    // Convert SVG to Image when width, height, or format changes
-    widthInput.addEventListener("input", debounce(generateImage, 300));
-    heightInput.addEventListener("input", debounce(generateImage, 300));
+    // Resize the preview immediately, then regenerate the image after input settles.
+    sizeInput.addEventListener("input", handleSizeInput);
+    sizeInput.addEventListener("wheel", handleSizeWheel, { passive: false });
+    disableWebpOnSafari();
     formatPng.addEventListener("change", generateImage);
     formatJpg.addEventListener("change", generateImage);
+    formatWebp.addEventListener("change", generateImage);
 
     // Debounce function to limit how often generateImage is called
     function debounce(
@@ -142,6 +212,30 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
       };
     }
 
+    function handleSizeWheel(event: WheelEvent) {
+      if (document.activeElement !== sizeInput) {
+        return;
+      }
+
+      event.preventDefault();
+
+      if (event.deltaY < 0) {
+        sizeInput.stepUp();
+      } else {
+        sizeInput.stepDown();
+      }
+
+      sizeInput.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    const debouncedGenerateImage = debounce(generateImage, 300);
+    let sizeGuideTimer: ReturnType<typeof setTimeout> | undefined;
+
+    function handleSizeInput() {
+      updatePreviewSize(undefined, true);
+      debouncedGenerateImage();
+    }
+
     // Generate image from SVG
     function generateImage() {
       const svgCode = svgPreviewContainer.innerHTML;
@@ -151,9 +245,9 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
         return;
       }
 
-      const width = parseInt(widthInput.value, 10) || 512;
-      const height = parseInt(heightInput.value, 10) || 512;
-      const format = formatPng.checked ? "png" : "jpg";
+      const size = clampImageSize(parseInt(sizeInput.value, 10) || 512);
+      const format = getSelectedFormat();
+      updatePreviewSize(size, false);
 
       // Create a temporary SVG element
       const tempSvg = new DOMParser().parseFromString(
@@ -161,9 +255,9 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
         "image/svg+xml",
       ).documentElement;
 
-      // Set width and height attributes
-      tempSvg.setAttribute("width", width.toString());
-      tempSvg.setAttribute("height", height.toString());
+      // Set square dimensions
+      tempSvg.setAttribute("width", size.toString());
+      tempSvg.setAttribute("height", size.toString());
 
       // Create a Blob from the SVG string
       const svgBlob = new Blob(
@@ -177,40 +271,40 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
       img.onload = () => {
         // Create a canvas element
         const canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
+        canvas.width = size;
+        canvas.height = size;
 
         // Draw the SVG onto the canvas
         const ctx = canvas.getContext("2d");
         if (ctx) {
-          // Fill with white background first (especially important for JPEG which doesn't support transparency)
-          ctx.fillStyle = "white";
-          ctx.fillRect(0, 0, width, height);
-
-          // Fill with green background
-          ctx.fillStyle = "#39b54a";
-          ctx.fillRect(0, 0, width, height);
+          if (format === "jpg") {
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, size, size);
+          }
 
           // Draw the SVG on top of the background
-          ctx.drawImage(img, 0, 0, width, height);
+          ctx.drawImage(img, 0, 0, size, size);
 
           // Convert canvas to Image data URL
           try {
             // For JPEG format, add quality parameter
-            const imageDataUrl =
-              format === "png"
-                ? canvas.toDataURL("image/png")
-                : canvas.toDataURL("image/jpeg");
+            const imageDataUrl = canvas.toDataURL(getImageMimeType(format));
 
             // Show preview
             previewContainer.innerHTML = "";
+            const previewFrame = document.createElement("div");
+            previewFrame.className = "logo-preview-frame";
             const preview = document.createElement("img");
             preview.src = imageDataUrl;
             preview.alt = `Converted ${format.toUpperCase()} Image`;
-            preview.style.maxWidth = "100%";
-            preview.style.maxHeight = "512px";
-            previewContainer.appendChild(preview);
+            preview.style.width = "100%";
+            preview.style.height = "100%";
+            preview.style.objectFit = "contain";
+            preview.style.display = "block";
+            previewFrame.appendChild(preview);
+            previewContainer.appendChild(previewFrame);
             previewContainer.classList.remove("hidden");
+            previewContainer.classList.add("flex");
             svgPreviewContainer.classList.add("hidden");
 
             // Enable download
@@ -237,5 +331,129 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
 
       img.src = tempSvgUrl;
     }
+
+    function getSelectedFormat() {
+      return (
+        document.querySelector<HTMLInputElement>('input[name="format"]:checked')
+          ?.value ?? "png"
+      );
+    }
+
+    function getImageMimeType(format: string) {
+      return format === "jpg" ? "image/jpeg" : `image/${format}`;
+    }
+
+    function disableWebpOnSafari() {
+      const userAgent = navigator.userAgent;
+      const isSafari =
+        /Safari/i.test(userAgent) &&
+        !/Chrome|Chromium|CriOS|FxiOS|Edg|OPR|Android/i.test(userAgent);
+
+      if (!isSafari) {
+        return;
+      }
+
+      formatWebp.disabled = true;
+      formatWebp.title = "WebP download is not available in Safari.";
+
+      if (formatWebp.checked) {
+        formatPng.checked = true;
+      }
+    }
+
+    function updatePreviewSize(
+      nextSize = parseInt(sizeInput.value, 10) || 512,
+      showGuide = false,
+    ) {
+      const clampedSize = Math.min(clampImageSize(nextSize), 512);
+      const previewSize = `${clampedSize}px`;
+      const imageSize = clampImageSize(nextSize);
+      previewShell.style.setProperty("--logo-preview-size", previewSize);
+      sizeGuideX.textContent = `${imageSize}px`;
+      sizeGuideY.textContent = `${imageSize}px`;
+
+      if (!showGuide) {
+        return;
+      }
+
+      sizeGuide.classList.add("is-visible");
+      clearTimeout(sizeGuideTimer);
+      sizeGuideTimer = setTimeout(() => {
+        sizeGuide.classList.remove("is-visible");
+      }, 1000);
+    }
+
+    function clampImageSize(size: number) {
+      return Math.min(Math.max(size, 32), 5120);
+    }
   });
 </script>
+
+<style>
+  .logo-preview > :global(svg),
+  :global(.logo-preview-frame) {
+    width: var(--logo-preview-size, 512px);
+    height: var(--logo-preview-size, 512px);
+    transition:
+      width 320ms cubic-bezier(0.16, 1, 0.3, 1),
+      height 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .size-guide.is-visible {
+    opacity: 1;
+  }
+
+  #size {
+    appearance: textfield;
+  }
+
+  #size::-webkit-inner-spin-button,
+  #size::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  .download-wave {
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      transform 900ms cubic-bezier(0.7, 0, 0.84, 0),
+      opacity 0ms linear 900ms;
+  }
+
+  .download-wave-shape {
+    position: absolute;
+    top: -17px;
+    left: 0;
+    width: 200%;
+    height: 18px;
+    fill: var(--color-brand);
+    animation: download-wave-flow 1.1s linear infinite;
+  }
+
+  .download-wave-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--color-brand);
+  }
+
+  .download-button:hover .download-wave {
+    opacity: 1;
+    transform: translateY(-100%);
+    transition:
+      opacity 120ms ease,
+      transform 3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes download-wave-flow {
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

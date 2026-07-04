@@ -6,8 +6,9 @@ import { ClientRouter } from "astro:transitions";
 export interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 const pageTitle = (title ? title + " | " : "") + siteConfig.title;
 // URL without trailling slash and extension
 const url = String(Astro.url)
@@ -23,6 +24,7 @@ const canonicalUrl = url.includes(originUrl) ? url : originUrl;
 <title>{pageTitle}</title>
 <meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
 <link rel="canonical" href={canonicalUrl} />
 <meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:title" content={pageTitle} />

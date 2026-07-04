@@ -4,13 +4,14 @@ import BaseHead from "../components/BaseHead.astro";
 export interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} noindex={noindex} />
   </head>
   <body class="bg-neutral-50 text-neutral-900" ontouchstart="">
     <div id="main-content" class="transition-fade">
