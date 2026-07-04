@@ -1,5 +1,6 @@
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 
 const defaultSchema = z.object({
   title: z.string(),
