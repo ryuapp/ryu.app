@@ -16,10 +16,17 @@ const description =
         {title}
       </h1>
 
-      <div class="mb-6 flex flex-col divide-y divide-gray-300">
+      <div class="project-list relative mb-6 flex flex-col" data-project-list>
+        <span
+          class="bg-neutral-150 pointer-events-none absolute inset-x-0 top-0 z-0 rounded-md opacity-0 transition-[opacity,transform] duration-200 ease-out"
+          data-project-hover-indicator></span>
         {
           projects.map((project) => (
-            <a href={`${project.link}`} class="p-3 hover:underline">
+            <a
+              href={`${project.link}`}
+              class="project-link hover:bg-neutral-150 focus-visible:bg-neutral-150 relative z-10 block rounded-md p-3 transition-colors duration-200 ease-out focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:outline-none"
+              data-project-link
+            >
               <h2>{project.name}</h2>
               <p class="text-sm">{project.description}</p>
             </a>
@@ -34,3 +41,116 @@ const description =
     </div>
   </div>
 </Layout>
+
+<script>
+  let cleanupProjectHover: (() => void) | undefined;
+
+  const initProjectHover = () => {
+    cleanupProjectHover?.();
+
+    const controller = new AbortController();
+    const mediaQuery = window.matchMedia("(min-width: 513px)");
+    cleanupProjectHover = () => controller.abort();
+
+    for (const list of document.querySelectorAll("[data-project-list]")) {
+      const indicator = list.querySelector("[data-project-hover-indicator]");
+      const links = list.querySelectorAll("[data-project-link]");
+
+      if (
+        !(list instanceof HTMLElement) ||
+        !(indicator instanceof HTMLElement)
+      ) {
+        continue;
+      }
+
+      const syncEnhancedState = () => {
+        list.toggleAttribute("data-project-hover-enhanced", mediaQuery.matches);
+
+        if (!mediaQuery.matches) {
+          indicator.style.opacity = "0";
+        }
+      };
+
+      const moveIndicator = (link: Element) => {
+        if (!mediaQuery.matches) return;
+
+        const listRect = list.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+
+        indicator.style.transform = `translateY(${linkRect.top - listRect.top}px)`;
+        indicator.style.opacity = "1";
+      };
+
+      const hideIndicator = () => {
+        if (!list.matches(":hover") && !list.contains(document.activeElement)) {
+          indicator.style.opacity = "0";
+        }
+      };
+
+      syncEnhancedState();
+      mediaQuery.addEventListener("change", syncEnhancedState, {
+        signal: controller.signal,
+      });
+
+      for (const link of links) {
+        link.addEventListener("mouseenter", () => moveIndicator(link), {
+          signal: controller.signal,
+        });
+        link.addEventListener("focus", () => moveIndicator(link), {
+          signal: controller.signal,
+        });
+        link.addEventListener("mouseleave", hideIndicator, {
+          signal: controller.signal,
+        });
+        link.addEventListener("blur", hideIndicator, {
+          signal: controller.signal,
+        });
+      }
+    }
+  };
+
+  initProjectHover();
+  document.addEventListener("astro:page-load", initProjectHover);
+</script>
+
+<style>
+  .project-list > .project-link + .project-link {
+    border-top: 1px solid rgb(209 213 219);
+  }
+
+  @media (min-width: 513px) {
+    .project-list[data-project-hover-enhanced] {
+      --project-hover-height: 4.5rem;
+    }
+
+    .project-list[data-project-hover-enhanced]
+      > [data-project-hover-indicator] {
+      height: var(--project-hover-height);
+    }
+
+    .project-list[data-project-hover-enhanced] .project-link {
+      display: flex;
+      height: var(--project-hover-height);
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-list[data-project-hover-enhanced] .project-link > * {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .project-list[data-project-hover-enhanced] .project-link:hover,
+    .project-list[data-project-hover-enhanced] .project-link:focus-visible {
+      background-color: transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-project-hover-indicator] {
+      transition: none;
+    }
+  }
+</style>

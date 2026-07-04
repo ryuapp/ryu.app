@@ -3,6 +3,7 @@
 @theme {
   --color-brand: #39b54a;
   --color-github: #181717;
+  --color-neutral-150: #ededed;
 
   --font-sans: "Courier New", Courier, "Hiragino Sans", monospace;
 }
