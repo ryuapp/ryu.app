@@ -11,12 +11,12 @@ const { title, items } = Astro.props;
 ---
 
 <nav class="relative -ml-4 flex flex-nowrap overflow-auto px-2 py-1 text-sm">
-  <a class="flex-none p-2 hover:underline" href="/">Home</a>
+  <a class="flex-none p-2 underline" href="/">Home</a>
   <p class="mx-1 my-2 flex-none select-none">></p>
   {
     items?.map((item) => (
       <>
-        <a class="flex-none p-2 hover:underline" href={item.href}>
+        <a class="flex-none p-2 underline" href={item.href}>
           {item.name}
         </a>
         <p class="mx-1 my-2 flex-none select-none">&gt;</p>

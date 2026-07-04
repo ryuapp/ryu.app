@@ -4,8 +4,8 @@ interface Props {
   variant?: "default" | "dark" | "menu";
 }
 
-const cssDefault = "hover:underline";
-const cssMenu = "text-center text-lg hover:underline hover:text-brand!";
+const cssDefault = "underline";
+const cssMenu = "text-center text-lg underline hover:text-brand!";
 
 const { href, variant = "default" } = Astro.props;
 const customCss = variant === "default" ? cssDefault : cssMenu;
