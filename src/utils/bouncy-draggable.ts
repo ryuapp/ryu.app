@@ -605,6 +605,13 @@ function attachBouncyDrag(element: HTMLElement): () => void {
 
   return () => {
     stopAnimation();
+    stopDragAnimation();
+
+    if (pointerId !== null && element.hasPointerCapture(pointerId)) {
+      element.releasePointerCapture(pointerId);
+    }
+
+    pointerId = null;
     element.removeEventListener("pointerdown", handlePointerDown);
     element.removeEventListener("pointermove", handlePointerMove);
     element.removeEventListener("pointerup", releasePointer);

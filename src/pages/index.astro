@@ -27,12 +27,14 @@ const description = "Ryu is a frontend developer.";
           </span>
         </div>
         <div data-bouncy-wall class="flex items-baseline gap-1">
-          <h1 class="text-lg font-bold" transition:name="ryu">Ryu</h1>
+          <h1 class="inline-block text-lg font-bold" transition:name="ryu">
+            Ryu
+          </h1>
           <span class="text-md text-neutral-400">@ryuapp</span>
         </div>
         <p
           data-bouncy-wall
-          class="text-neutral-400"
+          class="inline-block text-neutral-400"
           transition:name="frontend-developer"
         >
           Frontend Developer
@@ -58,6 +60,13 @@ const description = "Ryu is a frontend developer.";
 
   let cleanup: (() => void) | undefined;
   let hintCleanup: (() => void) | undefined;
+
+  document.addEventListener("astro:before-preparation", () => {
+    cleanup?.();
+    hintCleanup?.();
+    cleanup = undefined;
+    hintCleanup = undefined;
+  });
 
   document.addEventListener("astro:page-load", () => {
     cleanup?.();

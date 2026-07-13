@@ -8,6 +8,14 @@
   --font-sans: "Courier New", Courier, "Hiragino Sans", monospace;
 }
 
+/* WebKit can fail to composite Astro's plus-lighter crossfade. */
+@supports (-webkit-touch-callout: none) {
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    mix-blend-mode: normal !important;
+  }
+}
+
 #markup {
   @apply text-xl leading-tight break-words;
 }
