@@ -4,9 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
-    "preview": "wrangler pages dev ./dist",
     "astro": "astro",
     "format": "prettier --write --cache --cache-strategy metadata ."
   },

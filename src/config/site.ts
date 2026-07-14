@@ -16,6 +16,6 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/ryuapp/",
+    github: "https://github.com/ryuapp",
   },
 };
