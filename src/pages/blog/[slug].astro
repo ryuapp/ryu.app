@@ -1,0 +1,22 @@
+---
+import MarkdownLayout from "../../layouts/markdown-layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => {
+    return {
+      params: { slug: entry.id },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const breadcrumbs = [{ name: "Blog", href: `/blog` }];
+---
+
+<MarkdownLayout frontmatter={entry.data} breadcrumbs={breadcrumbs}>
+  <Content />
+</MarkdownLayout>

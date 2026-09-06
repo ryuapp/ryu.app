@@ -4,9 +4,8 @@ title: "Privacy Policy"
 description: "Privacy Policy"
 ---
 
-# Privacy Policy
+This website is a personal website.
 
-This website is a personal website.  
 We don't collect visitors personal information and share your information with other parties.  
 However, there is information collected by visiting this website for analyzing visitors usage.
 

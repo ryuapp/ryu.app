@@ -3,8 +3,8 @@ import MarkdownLayout from "../layouts/markdown-layout.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("site");
-  return blogEntries.map((entry) => ({
+  const siteEntries = await getCollection("site");
+  return siteEntries.map((entry) => ({
     params: { id: entry.id },
     props: { entry },
   }));

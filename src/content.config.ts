@@ -20,6 +20,14 @@ const site = defineCollection({
   schema: defaultSchema,
 });
 
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  schema: defaultSchema.extend({
+    publishedAt: z.string(),
+  }),
+});
+
 export const collections = {
   site,
+  blog,
 };

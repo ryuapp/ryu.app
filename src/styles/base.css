@@ -20,8 +20,8 @@
   @apply text-xl leading-tight break-words;
 }
 
-#markup > * + * {
-  @apply mt-0 mb-4;
+#markup > p {
+  @apply mt-6;
 }
 
 #markup li + li {
@@ -29,11 +29,11 @@
 }
 
 #markup li > p + p {
-  @apply mt-3;
+  @apply mt-2;
 }
 
 #markup p {
-  @apply text-base leading-tight text-zinc-600;
+  @apply text-sm leading-tight text-zinc-600;
 }
 #markup strong {
   @apply font-semibold;
@@ -48,31 +48,31 @@
 }
 
 #markup h1 {
-  @apply mt-3 mb-2 text-2xl leading-tight font-semibold;
+  @apply mt-4 text-xl leading-tight;
 }
 
 #markup h2 {
-  @apply mt-5 mb-2 text-xl leading-tight font-semibold;
+  @apply mt-4 text-lg leading-tight;
 }
 
 #markup h3 {
-  @apply mt-3 mb-2 text-lg leading-snug font-semibold;
+  @apply mt-4 text-base leading-snug;
 }
 
 #markup h4 {
-  @apply mt-3 mb-2 text-base leading-none font-semibold;
+  @apply mt-4 text-sm leading-none;
 }
 
 #markup h5 {
-  @apply mt-3 mb-2 text-sm leading-tight font-semibold;
+  @apply mt-3 text-sm leading-tight;
 }
 
 #markup h6 {
-  @apply mt-3 mb-2 text-sm leading-tight font-semibold text-gray-600;
+  @apply mt-3 text-sm leading-tight text-gray-600;
 }
 
 #markup blockquote {
-  @apply border-l-4 border-gray-300 pr-4 pl-4 text-base text-gray-600;
+  @apply border-l-4 border-gray-300 pr-4 pl-4 text-sm text-gray-600;
 }
 
 #markup code {
@@ -88,11 +88,11 @@
 }
 
 #markup ul {
-  @apply list-disc pl-8 text-base;
+  @apply mt-1 list-disc pl-8 text-sm;
 }
 
 #markup ol {
-  @apply list-decimal pl-8 text-base;
+  @apply mt-1 list-decimal pl-8 text-sm;
 }
 
 #markup kbd {
@@ -100,7 +100,7 @@
 }
 
 #markup table {
-  @apply border-gray-600 text-base;
+  @apply border-gray-600 text-sm;
 }
 
 #markup th {
