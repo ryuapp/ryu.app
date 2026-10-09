@@ -17,6 +17,7 @@ const canonicalPath =
     .replace(/\.html$/, "")
     .replace(/\/$/, "") || "/";
 const canonicalUrl = new URL(canonicalPath, Astro.site).href.replace(/\/$/, "");
+const imageUrl = new URL("/og.webp", Astro.site).href;
 ---
 
 <meta charset="utf-8" />
@@ -31,8 +32,12 @@ const canonicalUrl = new URL(canonicalPath, Astro.site).href.replace(/\/$/, "");
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalUrl} />
-<meta property="og:image" content={new URL("/og.webp", Astro.url)} />
+<meta property="og:image" content={imageUrl} />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={siteConfig.title} />
 <meta name="author" content={siteConfig.author} />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
