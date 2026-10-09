@@ -18,6 +18,10 @@ const canonicalPath =
     .replace(/\/$/, "") || "/";
 const canonicalUrl = new URL(canonicalPath, Astro.site).href.replace(/\/$/, "");
 const imageUrl = new URL("/og.webp", Astro.site).href;
+const twitterCard =
+  canonicalPath === "/blog" || canonicalPath.startsWith("/blog/")
+    ? "summary"
+    : "summary_large_image";
 ---
 
 <meta charset="utf-8" />
@@ -33,7 +37,7 @@ const imageUrl = new URL("/og.webp", Astro.site).href;
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={imageUrl} />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content={twitterCard} />
 <meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageUrl} />
