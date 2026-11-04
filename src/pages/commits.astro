@@ -76,37 +76,37 @@ const description = "Commits of ryu.app on GitHub.";
     <div class="flex max-w-lg flex-col items-center justify-center gap-4 py-2">
       <h1 class="text-2xl">Commits</h1>
       <p class="text-sm text-neutral-400">
-        Commits of <a
+        Commits of{" "}
+        <a
           href="https://github.com/ryuapp/ryu.app"
-          class="text-brand underline">ryu.app</a
+          class="text-brand underline"
         >
+          ryu.app
+        </a>
       </p>
       <ul
         aria-label="commits of ryu.app"
         class="relative my-4 flex flex-col gap-8 pb-8 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:-translate-x-1/2 before:border before:border-dashed before:border-zinc-700 after:absolute after:top-6 after:bottom-6 after:left-8 after:-translate-x-1/2 after:border after:border-zinc-700"
       >
-        {
-          commits.map((commit) => {
-            return (
-              <li class="relative pl-8">
-                <span class="absolute left-0 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-zinc-900 text-lg">
-                  {commit.emoji}
-                </span>
-                <div class="flex flex-1 flex-col gap-0">
-                  <h2 class="text-sm"> {commit.message} </h2>
-                  <time
-                    class="text-xs text-neutral-400"
-                    title={commit.datetime}
-                  >
-                    {commit.time}
-                  </time>
-                </div>
-              </li>
-            );
-          })
-        }
+        {commits.map((commit) => {
+          return (
+            <li class="relative pl-8">
+              <span class="absolute left-0 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-zinc-900 text-lg">
+                {commit.emoji}
+              </span>
+              <div class="flex flex-1 flex-col gap-0">
+                <h2 class="text-sm"> {commit.message} </h2>
+                <time class="text-xs text-neutral-400" title={commit.datetime}>
+                  {commit.time}
+                </time>
+              </div>
+            </li>
+          );
+        })}
       </ul>
-      <Link href="/" variant="dark">Home</Link>
+      <Link href="/" variant="dark">
+        Home
+      </Link>
       <Footer isDark={true} />
     </div>
   </div>

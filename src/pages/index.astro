@@ -9,9 +9,7 @@ const description = "Ryu is a frontend developer.";
 ---
 
 <Layout description={description}>
-  <div
-    class="flex min-h-svh justify-center overflow-hidden bg-zinc-900 text-white"
-  >
+  <div class="flex min-h-svh justify-center overflow-hidden bg-zinc-900 text-white">
     <div class="flex max-w-lg flex-col justify-center gap-4 py-2">
       <div>
         <div class="relative flex h-16 justify-center">
@@ -42,13 +40,11 @@ const description = "Ryu is a frontend developer.";
       </div>
 
       <nav class="grid justify-items-start gap-1">
-        {
-          siteConfig.mainNav.map((link) => (
-            <Link href={link.href} variant="menu">
-              {link.title}
-            </Link>
-          ))
-        }
+        {siteConfig.mainNav.map((link) => (
+          <Link href={link.href} variant="menu">
+            {link.title}
+          </Link>
+        ))}
       </nav>
       <Footer isDark={true} />
     </div>

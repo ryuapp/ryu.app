@@ -28,13 +28,11 @@ const publishedAt = frontmatter?.publishedAt;
         <Breadcrumbs title={title} items={breadcrumbs} />
         <article id="markup">
           {title && <h1>{title}</h1>}
-          {
-            publishedAt && (
-              <time class="text-xs text-neutral-500" datetime={publishedAt}>
-                {publishedAt}
-              </time>
-            )
-          }
+          {publishedAt && (
+            <time class="text-xs text-neutral-500" datetime={publishedAt}>
+              {publishedAt}
+            </time>
+          )}
           <slot />
         </article>
         <slot name="other-projects" />

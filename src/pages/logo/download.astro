@@ -15,9 +15,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
   description="Download Ryuapp's logo in PNG, JPEG, or WebP format"
   noindex={true}
 >
-  <main
-    class="flex min-h-svh justify-center overflow-hidden bg-zinc-900 text-white"
-  >
+  <main class="flex min-h-svh justify-center overflow-hidden bg-zinc-900 text-white">
     <div class="flex w-full max-w-xl flex-col justify-center gap-4 px-4 py-2">
       <div class="flex flex-col gap-4">
         <div>
@@ -40,35 +38,35 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
             <div
               id="previewContainer"
               class="logo-preview absolute inset-0 hidden items-center justify-center"
-            >
-            </div>
+            ></div>
             <div
               id="sizeGuide"
               class="size-guide pointer-events-none absolute inset-0 z-[2] opacity-0 transition-opacity duration-[160ms]"
               aria-hidden="true"
             >
-              <div
-                class="size-guide-line-x border-brand text-brand before:bg-brand after:bg-brand absolute top-[calc(50%+var(--logo-preview-size,512px)/2+10px)] left-1/2 w-[var(--logo-preview-size,512px)] -translate-x-1/2 border-t text-xs leading-none transition-[top,width] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-[-4px] before:left-0 before:h-[7px] before:w-px before:content-[''] after:absolute after:top-[-4px] after:right-0 after:h-[7px] after:w-px after:content-['']"
-              >
+              <div class="size-guide-line-x border-brand text-brand before:bg-brand after:bg-brand absolute top-[calc(50%+var(--logo-preview-size,512px)/2+10px)] left-1/2 w-[var(--logo-preview-size,512px)] -translate-x-1/2 border-t text-xs leading-none transition-[top,width] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-[-4px] before:left-0 before:h-[7px] before:w-px before:content-[''] after:absolute after:top-[-4px] after:right-0 after:h-[7px] after:w-px after:content-['']">
                 <span
                   data-size-guide-x
                   class="absolute top-[6px] left-1/2 -translate-x-1/2"
-                  >512px</span
                 >
+                  512px
+                </span>
               </div>
-              <div
-                class="size-guide-line-y border-brand text-brand before:bg-brand after:bg-brand absolute top-1/2 left-[calc(50%+var(--logo-preview-size,512px)/2+10px)] h-[var(--logo-preview-size,512px)] -translate-y-1/2 border-l text-xs leading-none transition-[left,height] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-0 before:left-[-4px] before:h-px before:w-[7px] before:content-[''] after:absolute after:bottom-0 after:left-[-4px] after:h-px after:w-[7px] after:content-['']"
-              >
+              <div class="size-guide-line-y border-brand text-brand before:bg-brand after:bg-brand absolute top-1/2 left-[calc(50%+var(--logo-preview-size,512px)/2+10px)] h-[var(--logo-preview-size,512px)] -translate-y-1/2 border-l text-xs leading-none transition-[left,height] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-0 before:left-[-4px] before:h-px before:w-[7px] before:content-[''] after:absolute after:bottom-0 after:left-[-4px] after:h-px after:w-[7px] after:content-['']">
                 <span
                   data-size-guide-y
                   class="absolute top-1/2 left-[6px] -translate-y-1/2 whitespace-nowrap"
-                  >512px</span
                 >
+                  512px
+                </span>
               </div>
             </div>
           </div>
           <p class="text-right text-sm text-neutral-400">
-            © 2026 <a href="/" class="text-brand underline">Ryu</a>
+            © 2026{" "}
+            <a href="/" class="text-brand underline">
+              Ryu
+            </a>
           </p>
         </div>
 
@@ -93,9 +91,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
 
           <div>
             <label class="mb-2 block text-sm font-medium">Format</label>
-            <div
-              class="flex min-h-10 items-center gap-4 text-sm text-neutral-300"
-            >
+            <div class="flex min-h-10 items-center gap-4 text-sm text-neutral-300">
               <label class="inline-flex items-center">
                 <input
                   type="radio"
@@ -143,12 +139,8 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
               viewBox="0 0 120 18"
               preserveAspectRatio="none"
             >
-              <path
-                d="M0 9 C10 1 20 1 30 9 S50 17 60 9 S80 1 90 9 S110 17 120 9 V18 H0 Z"
-              ></path>
-              <path
-                d="M120 9 C130 1 140 1 150 9 S170 17 180 9 S200 1 210 9 S230 17 240 9 V18 H120 Z"
-              ></path>
+              <path d="M0 9 C10 1 20 1 30 9 S50 17 60 9 S80 1 90 9 S110 17 120 9 V18 H0 Z"></path>
+              <path d="M120 9 C130 1 140 1 150 9 S170 17 180 9 S200 1 210 9 S230 17 240 9 V18 H120 Z"></path>
             </svg>
             <span class="download-wave-fill"></span>
           </span>

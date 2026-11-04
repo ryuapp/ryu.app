@@ -12,26 +12,23 @@ const description =
 <Layout title={title} description={description}>
   <div class="flex min-h-svh justify-center overflow-hidden">
     <div class="flex max-w-xl flex-col justify-center gap-4 py-2">
-      <h1 class="mb-3 text-center text-2xl">
-        {title}
-      </h1>
+      <h1 class="mb-3 text-center text-2xl">{title}</h1>
 
       <div class="project-list relative mb-6 flex flex-col" data-project-list>
         <span
           class="bg-neutral-150 pointer-events-none absolute inset-x-0 top-0 z-0 rounded-md opacity-0 transition-[opacity,transform] duration-200 ease-out"
-          data-project-hover-indicator></span>
-        {
-          projects.map((project) => (
-            <a
-              href={`${project.link}`}
-              class="project-link hover:bg-neutral-150 focus-visible:bg-neutral-150 relative z-10 block p-3 transition-colors duration-200 ease-out focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:outline-none"
-              data-project-link
-            >
-              <h2>{project.name}</h2>
-              <p class="text-sm">{project.description}</p>
-            </a>
-          ))
-        }
+          data-project-hover-indicator
+        ></span>
+        {projects.map((project) => (
+          <a
+            href={`${project.link}`}
+            class="project-link hover:bg-neutral-150 focus-visible:bg-neutral-150 relative z-10 block p-3 transition-colors duration-200 ease-out focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:outline-none"
+            data-project-link
+          >
+            <h2>{project.name}</h2>
+            <p class="text-sm">{project.description}</p>
+          </a>
+        ))}
       </div>
 
       <div class="flex justify-center">

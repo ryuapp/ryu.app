@@ -9,12 +9,12 @@
     "format": "prettier --write --cache --cache-strategy metadata ."
   },
   "dependencies": {
-    "astro": "7.3.1"
+    "astro": "7.4.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.3.3",
-    "prettier": "3.9.6",
-    "prettier-plugin-astro": "0.14.1",
+    "prettier": "3.9.10",
+    "prettier-plugin-astro": "1.1.2",
     "prettier-plugin-tailwindcss": "0.8.1",
     "tailwindcss": "4.3.3"
   }
