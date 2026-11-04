@@ -1,0 +1,7 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "astro": true,
+  "sortTailwindcss": {
+    "stylesheet": "./src/styles/base.css",
+  },
+}

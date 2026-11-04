@@ -104,12 +104,7 @@ function overlaps(
   height: number,
   rect: CollisionRect,
 ): boolean {
-  return (
-    x < rect.right &&
-    x + width > rect.left &&
-    y < rect.bottom &&
-    y + height > rect.top
-  );
+  return x < rect.right && x + width > rect.left && y < rect.bottom && y + height > rect.top;
 }
 
 function resolveWallCollision(
@@ -252,14 +247,7 @@ function resolveDraggedStep(
   let nextY = targetY;
 
   if (collidesWithWall(nextX, previousY, width, height, walls)) {
-    nextX = resolveDraggedX(
-      previousX,
-      targetX,
-      previousY,
-      width,
-      height,
-      walls,
-    );
+    nextX = resolveDraggedX(previousX, targetX, previousY, width, height, walls);
   }
 
   if (collidesWithWall(nextX, nextY, width, height, walls)) {
@@ -285,21 +273,9 @@ export function resolveDraggedPosition({
   walls = [],
 }: DragPositionInput): { x: number; y: number } {
   const clampedTargetX = clamp(targetX, 0, Math.max(0, viewportWidth - width));
-  const clampedTargetY = clamp(
-    targetY,
-    0,
-    Math.max(0, viewportHeight - height),
-  );
-  const clampedPreviousX = clamp(
-    previousX,
-    0,
-    Math.max(0, viewportWidth - width),
-  );
-  const clampedPreviousY = clamp(
-    previousY,
-    0,
-    Math.max(0, viewportHeight - height),
-  );
+  const clampedTargetY = clamp(targetY, 0, Math.max(0, viewportHeight - height));
+  const clampedPreviousX = clamp(previousX, 0, Math.max(0, viewportWidth - width));
+  const clampedPreviousY = clamp(previousY, 0, Math.max(0, viewportHeight - height));
 
   const deltaX = clampedTargetX - clampedPreviousX;
   const deltaY = clampedTargetY - clampedPreviousY;
@@ -519,9 +495,7 @@ function attachBouncyDrag(element: HTMLElement): () => void {
 
   const addSample = (clientX: number, clientY: number, time: number) => {
     samples.push({ x: clientX, y: clientY, time });
-    samples = samples.filter(
-      (sample) => time - sample.time <= SAMPLE_WINDOW_MS,
-    );
+    samples = samples.filter((sample) => time - sample.time <= SAMPLE_WINDOW_MS);
   };
 
   const updateVelocity = () => {

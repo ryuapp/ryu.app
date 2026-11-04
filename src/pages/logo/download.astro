@@ -20,9 +20,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
       <div class="flex flex-col gap-4">
         <div>
           <h1 class="text-lg font-bold">Logo Download</h1>
-          <p class="text-sm text-neutral-400">
-            Download Ryuapp's logo as PNG, JPEG, or WebP.
-          </p>
+          <p class="text-sm text-neutral-400">Download Ryuapp's logo as PNG, JPEG, or WebP.</p>
         </div>
 
         <div class="grid gap-2">
@@ -44,15 +42,12 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
               class="size-guide pointer-events-none absolute inset-0 z-[2] opacity-0 transition-opacity duration-[160ms]"
               aria-hidden="true"
             >
-              <div class="size-guide-line-x border-brand text-brand before:bg-brand after:bg-brand absolute top-[calc(50%+var(--logo-preview-size,512px)/2+10px)] left-1/2 w-[var(--logo-preview-size,512px)] -translate-x-1/2 border-t text-xs leading-none transition-[top,width] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-[-4px] before:left-0 before:h-[7px] before:w-px before:content-[''] after:absolute after:top-[-4px] after:right-0 after:h-[7px] after:w-px after:content-['']">
-                <span
-                  data-size-guide-x
-                  class="absolute top-[6px] left-1/2 -translate-x-1/2"
-                >
+              <div class="size-guide-line-x absolute top-[calc(50%+var(--logo-preview-size,512px)/2+10px)] left-1/2 w-[var(--logo-preview-size,512px)] -translate-x-1/2 border-t border-brand text-xs leading-none text-brand transition-[top,width] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-[-4px] before:left-0 before:h-[7px] before:w-px before:bg-brand before:content-[''] after:absolute after:top-[-4px] after:right-0 after:h-[7px] after:w-px after:bg-brand after:content-['']">
+                <span data-size-guide-x class="absolute top-[6px] left-1/2 -translate-x-1/2">
                   512px
                 </span>
               </div>
-              <div class="size-guide-line-y border-brand text-brand before:bg-brand after:bg-brand absolute top-1/2 left-[calc(50%+var(--logo-preview-size,512px)/2+10px)] h-[var(--logo-preview-size,512px)] -translate-y-1/2 border-l text-xs leading-none transition-[left,height] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-0 before:left-[-4px] before:h-px before:w-[7px] before:content-[''] after:absolute after:bottom-0 after:left-[-4px] after:h-px after:w-[7px] after:content-['']">
+              <div class="size-guide-line-y absolute top-1/2 left-[calc(50%+var(--logo-preview-size,512px)/2+10px)] h-[var(--logo-preview-size,512px)] -translate-y-1/2 border-l border-brand text-xs leading-none text-brand transition-[left,height] duration-[320ms] ease-[cubic-bezier(0.16,1,0.3,1)] [text-shadow:0_1px_0_rgb(24_24_27/0.9)] before:absolute before:top-0 before:left-[-4px] before:h-px before:w-[7px] before:bg-brand before:content-[''] after:absolute after:bottom-0 after:left-[-4px] after:h-px after:w-[7px] after:bg-brand after:content-['']">
                 <span
                   data-size-guide-y
                   class="absolute top-1/2 left-[6px] -translate-y-1/2 whitespace-nowrap"
@@ -83,7 +78,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
                 min="32"
                 max="5120"
                 value="512"
-                class="focus:border-brand focus:ring-brand/40 w-24 rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-white outline-none invalid:border-pink-500 invalid:text-pink-400 focus:ring-2"
+                class="w-24 rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-white outline-none invalid:border-pink-500 invalid:text-pink-400 focus:border-brand focus:ring-2 focus:ring-brand/40"
               />
               <span class="text-sm text-neutral-400">px</span>
             </div>
@@ -104,13 +99,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
                 <span class="ml-2">PNG</span>
               </label>
               <label class="inline-flex items-center">
-                <input
-                  type="radio"
-                  name="format"
-                  value="jpg"
-                  class="accent-brand"
-                  id="formatJpg"
-                />
+                <input type="radio" name="format" value="jpg" class="accent-brand" id="formatJpg" />
                 <span class="ml-2">JPEG</span>
               </label>
               <label class="inline-flex items-center">
@@ -129,16 +118,12 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
 
         <a
           id="downloadLink"
-          class="download-button border-brand/60 text-brand hover:border-brand relative isolate inline-flex w-fit items-center justify-center overflow-hidden rounded border px-4 py-2 text-sm font-medium transition duration-300 hover:-translate-y-0.5 hover:text-zinc-950 active:translate-y-0 aria-disabled:pointer-events-none aria-disabled:border-zinc-700 aria-disabled:text-zinc-500"
+          class="download-button relative isolate inline-flex w-fit items-center justify-center overflow-hidden rounded border border-brand/60 px-4 py-2 text-sm font-medium text-brand transition duration-300 hover:-translate-y-0.5 hover:border-brand hover:text-zinc-950 active:translate-y-0 aria-disabled:pointer-events-none aria-disabled:border-zinc-700 aria-disabled:text-zinc-500"
           download="ryuapp.png"
           aria-disabled="true"
         >
           <span class="download-wave" aria-hidden="true">
-            <svg
-              class="download-wave-shape"
-              viewBox="0 0 120 18"
-              preserveAspectRatio="none"
-            >
+            <svg class="download-wave-shape" viewBox="0 0 120 18" preserveAspectRatio="none">
               <path d="M0 9 C10 1 20 1 30 9 S50 17 60 9 S80 1 90 9 S110 17 120 9 V18 H0 Z"></path>
               <path d="M120 9 C130 1 140 1 150 9 S170 17 180 9 S200 1 210 9 S230 17 240 9 V18 H120 Z"></path>
             </svg>
@@ -153,31 +138,17 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const svgPreviewContainer = document.getElementById(
-      "svgPreviewContainer",
-    ) as HTMLDivElement;
+    const svgPreviewContainer = document.getElementById("svgPreviewContainer") as HTMLDivElement;
     const sizeInput = document.getElementById("size") as HTMLInputElement;
-    const previewContainer = document.getElementById(
-      "previewContainer",
-    ) as HTMLDivElement;
-    const previewShell = document.getElementById(
-      "previewShell",
-    ) as HTMLDivElement;
+    const previewContainer = document.getElementById("previewContainer") as HTMLDivElement;
+    const previewShell = document.getElementById("previewShell") as HTMLDivElement;
     const sizeGuide = document.getElementById("sizeGuide") as HTMLDivElement;
-    const sizeGuideX = document.querySelector(
-      "[data-size-guide-x]",
-    ) as HTMLSpanElement;
-    const sizeGuideY = document.querySelector(
-      "[data-size-guide-y]",
-    ) as HTMLSpanElement;
-    const downloadLink = document.getElementById(
-      "downloadLink",
-    ) as HTMLAnchorElement;
+    const sizeGuideX = document.querySelector("[data-size-guide-x]") as HTMLSpanElement;
+    const sizeGuideY = document.querySelector("[data-size-guide-y]") as HTMLSpanElement;
+    const downloadLink = document.getElementById("downloadLink") as HTMLAnchorElement;
     const formatPng = document.getElementById("formatPng") as HTMLInputElement;
     const formatJpg = document.getElementById("formatJpg") as HTMLInputElement;
-    const formatWebp = document.getElementById(
-      "formatWebp",
-    ) as HTMLInputElement;
+    const formatWebp = document.getElementById("formatWebp") as HTMLInputElement;
 
     // Generate PNG or JPEG image on page load
     updatePreviewSize(undefined, false);
@@ -192,10 +163,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
     formatWebp.addEventListener("change", generateImage);
 
     // Debounce function to limit how often generateImage is called
-    function debounce(
-      func: (...args: any[]) => void,
-      wait: number,
-    ): (...args: any[]) => void {
+    function debounce(func: (...args: any[]) => void, wait: number): (...args: any[]) => void {
       let timeout: ReturnType<typeof setTimeout> | undefined;
       return function (this: unknown, ...args: any[]) {
         const context = this;
@@ -242,20 +210,16 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
       updatePreviewSize(size, false);
 
       // Create a temporary SVG element
-      const tempSvg = new DOMParser().parseFromString(
-        svgCode,
-        "image/svg+xml",
-      ).documentElement;
+      const tempSvg = new DOMParser().parseFromString(svgCode, "image/svg+xml").documentElement;
 
       // Set square dimensions
       tempSvg.setAttribute("width", size.toString());
       tempSvg.setAttribute("height", size.toString());
 
       // Create a Blob from the SVG string
-      const svgBlob = new Blob(
-        [new XMLSerializer().serializeToString(tempSvg)],
-        { type: "image/svg+xml" },
-      );
+      const svgBlob = new Blob([new XMLSerializer().serializeToString(tempSvg)], {
+        type: "image/svg+xml",
+      });
       const tempSvgUrl = URL.createObjectURL(svgBlob);
 
       // Create an Image element to load the SVG
@@ -304,10 +268,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
             downloadLink.download = `ryuapp.${format}`;
             downloadLink.removeAttribute("aria-disabled");
           } catch (error) {
-            console.error(
-              `Error converting to ${format.toUpperCase()}:`,
-              error,
-            );
+            console.error(`Error converting to ${format.toUpperCase()}:`, error);
             previewContainer.innerHTML = `<p class="text-red-500">Error converting to ${format.toUpperCase()}.</p>`;
           }
         }
@@ -316,8 +277,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
 
       img.onerror = () => {
         console.error("Error loading SVG");
-        previewContainer.innerHTML =
-          '<p class="text-red-500">Error loading SVG.</p>';
+        previewContainer.innerHTML = '<p class="text-red-500">Error loading SVG.</p>';
         URL.revokeObjectURL(tempSvgUrl);
       };
 
@@ -326,8 +286,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
 
     function getSelectedFormat() {
       return (
-        document.querySelector<HTMLInputElement>('input[name="format"]:checked')
-          ?.value ?? "png"
+        document.querySelector<HTMLInputElement>('input[name="format"]:checked')?.value ?? "png"
       );
     }
 
@@ -353,10 +312,7 @@ const svgData = await fetch(import.meta.env.LOGO_URL)
       }
     }
 
-    function updatePreviewSize(
-      nextSize = parseInt(sizeInput.value, 10) || 512,
-      showGuide = false,
-    ) {
+    function updatePreviewSize(nextSize = parseInt(sizeInput.value, 10) || 512, showGuide = false) {
       const clampedSize = Math.min(clampImageSize(nextSize), 512);
       const previewSize = `${clampedSize}px`;
       const imageSize = clampImageSize(nextSize);

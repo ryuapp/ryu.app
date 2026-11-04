@@ -4,9 +4,7 @@ import Link from "../components/link.astro";
 import Layout from "../layouts/layout.astro";
 
 const GITHUB_COMMIT_API = "https://api.github.com/repos/ryuapp/ryu.app/commits";
-const res: CommitResponse = await fetch(GITHUB_COMMIT_API).then((res) =>
-  res.json(),
-);
+const res: CommitResponse = await fetch(GITHUB_COMMIT_API).then((res) => res.json());
 
 type CommitResponse = Array<CommitObj>;
 type CommitObj = {
@@ -43,8 +41,7 @@ function getYMD(time: string) {
   const currentDate = new Date();
   const date = new Date(time);
   return date.toLocaleDateString("en", {
-    year:
-      date.getFullYear() === currentDate.getFullYear() ? undefined : "numeric",
+    year: date.getFullYear() === currentDate.getFullYear() ? undefined : "numeric",
     month: "short",
     day: "numeric",
   });
@@ -77,10 +74,7 @@ const description = "Commits of ryu.app on GitHub.";
       <h1 class="text-2xl">Commits</h1>
       <p class="text-sm text-neutral-400">
         Commits of{" "}
-        <a
-          href="https://github.com/ryuapp/ryu.app"
-          class="text-brand underline"
-        >
+        <a href="https://github.com/ryuapp/ryu.app" class="text-brand underline">
           ryu.app
         </a>
       </p>

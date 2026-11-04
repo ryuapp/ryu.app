@@ -51,9 +51,7 @@ const twitterCard =
 <meta name="theme-color" content="#39b54a" />
 <script>
   document.addEventListener("visibilitychange", function () {
-    const favicon = document.querySelector(
-      'link[rel="icon"]',
-    ) as HTMLLinkElement;
+    const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (document.visibilityState === "hidden") {
       favicon!.href = "/favicon-32x32-grayscale.png";
     } else {

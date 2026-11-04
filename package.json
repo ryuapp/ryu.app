@@ -6,16 +6,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "astro": "astro",
-    "format": "prettier --write --cache --cache-strategy metadata ."
+    "format": "oxfmt"
   },
   "dependencies": {
     "astro": "7.4.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.3.3",
-    "prettier": "3.9.10",
-    "prettier-plugin-astro": "1.1.2",
-    "prettier-plugin-tailwindcss": "0.8.1",
+    "oxfmt": "0.75.0",
     "tailwindcss": "4.3.3"
   }
 }
