@@ -18,11 +18,11 @@ const { title, description } = frontmatter;
 const publishedAt = frontmatter?.publishedAt;
 ---
 
-<html lang="en">
+<html lang="en" class="bg-neutral-50 text-neutral-900">
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="bg-neutral-50 text-neutral-900" ontouchstart="">
+  <body class="min-h-dvh bg-neutral-50 text-neutral-900" ontouchstart="">
     <div id="main-content" class="transition-fade mx-auto max-w-2xl">
       <main class="p-5">
         <Breadcrumbs title={title} items={breadcrumbs} />

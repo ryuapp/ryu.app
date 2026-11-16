@@ -5,15 +5,17 @@ export interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  theme?: "light" | "dark";
 }
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, theme = "light" } = Astro.props;
+const pageColors = theme === "dark" ? "bg-zinc-900 text-white" : "bg-neutral-50 text-neutral-900";
 ---
 
-<html lang="en">
+<html lang="en" class={pageColors}>
   <head>
-    <BaseHead title={title} description={description} noindex={noindex} />
+    <BaseHead title={title} description={description} noindex={noindex} theme={theme} />
   </head>
-  <body class="bg-neutral-50 text-neutral-900" ontouchstart="">
+  <body class:list={["min-h-dvh", pageColors]} ontouchstart="">
     <div id="main-content" class="transition-fade">
       <slot class="transition" />
     </div>
